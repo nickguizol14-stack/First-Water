@@ -10,7 +10,11 @@
       "Bash(gh repo *)",
       "Bash(vercel link *)",
       "Bash(vercel --prod --yes)",
-      "Bash(vercel ls *)"
+      "Bash(vercel ls *)",
+      "Bash(curl -sI \"https://picsum.photos/seed/fw-hero-main/2800/1500\")",
+      "Bash(curl -sIL \"https://picsum.photos/seed/fw-hero-main/2800/1500\")",
+      "Bash(curl -sL -o /tmp/test.jpg \"https://picsum.photos/seed/fw-hero-main/800/450\")",
+      "Read(//tmp/**)"
     ]
   }
 }

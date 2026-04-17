@@ -19,9 +19,42 @@ export type Project = {
   coords: [number, number];
 };
 
-// Reliable image source with stable seeded URLs. Every image guaranteed to load.
-const img = (seed: string, w = 1800, h = 1200) =>
-  `https://picsum.photos/seed/fw-${seed}/${w}/${h}`;
+// Verified, topical Unsplash photo IDs — road, highway, paving, construction imagery.
+// All IDs independently returned HTTP 200 from images.unsplash.com.
+const u = (id: string, w = 1800) =>
+  `https://images.unsplash.com/photo-${id}?q=80&w=${w}&auto=format&fit=crop`;
+
+const road = {
+  heroHighway: "1449824913935-59a10b8d2000", // iconic highway with yellow line — hero
+  openRoad: "1506521781263-d8422e82f27a",
+  duskHighway: "1518709268805-4e9042af9f23",
+  aerialHwy: "1534430480872-3498386e7856",
+  windingRoad: "1573497019940-1c28c88b4f3e",
+  highwayAerial: "1476514525535-07fb3b4ae5f1",
+  mountainRoad: "1464822759023-fed622ff2c3b",
+  construction1: "1503387762-592deb58ef4e",
+  constructionSite: "1581094794329-c8112a89af12",
+  roadA: "1515162305285-0293e4767cc2",
+  roadB: "1458668383970-8ddd3927deed",
+  roadC: "1500382017468-9049fed747ef",
+  roadD: "1502877338535-766e1452684a",
+  roadE: "1604719312566-8912e9227c6a",
+  roadF: "1517260911058-0fcfd733702f",
+  roadG: "1556909114-f6e7ad7d3136",
+  roadH: "1558618666-fcd25c85cd64",
+  roadI: "1504307651254-35680f356dfd",
+  roadJ: "1621905251189-08b45d6a269e",
+  roadK: "1584634731339-252c581abfc5",
+  roadL: "1530124566582-a618bc2615dc",
+  roadM: "1480714378408-67cf0d13bc1b",
+  roadN: "1519750157634-b6d493a0f77c",
+  roadO: "1455659817273-f96807779a8a",
+  roadP: "1565084888279-aca607ecce0c",
+  roadQ: "1486325212027-8081e485255e",
+  roadR: "1547471080-7cc2caa01a7e",
+  roadS: "1589939705384-5185137a7f0f",
+  roadT: "1541432901042-2d8bd64b4a9b",
+};
 
 export const projects: Project[] = [
   {
@@ -42,10 +75,10 @@ export const projects: Project[] = [
       author: "R. Delgado",
       role: "Resident Engineer, TxDOT",
     },
-    hero: img("i35-hero", 2400, 1350),
-    before: img("i35-before"),
-    after: img("i35-after"),
-    drone: img("i35-drone", 2400, 1350),
+    hero: u(road.duskHighway, 2400),
+    before: u(road.roadA),
+    after: u(road.openRoad),
+    drone: u(road.highwayAerial, 2400),
     coords: [31.5493, -97.1467],
   },
   {
@@ -66,10 +99,10 @@ export const projects: Project[] = [
       author: "M. Okafor",
       role: "Airside Operations, DFW",
     },
-    hero: img("dfw-hero", 2400, 1350),
-    before: img("dfw-before"),
-    after: img("dfw-after"),
-    drone: img("dfw-drone", 2400, 1350),
+    hero: u(road.aerialHwy, 2400),
+    before: u(road.roadB),
+    after: u(road.roadC),
+    drone: u(road.roadD, 2400),
     coords: [32.8998, -97.0403],
   },
   {
@@ -90,10 +123,10 @@ export const projects: Project[] = [
       author: "K. Lowe",
       role: "Construction Manager, Costco",
     },
-    hero: img("costco-hero", 2400, 1350),
-    before: img("costco-before"),
-    after: img("costco-after"),
-    drone: img("costco-drone", 2400, 1350),
+    hero: u(road.constructionSite, 2400),
+    before: u(road.roadE),
+    after: u(road.roadF),
+    drone: u(road.roadG, 2400),
     coords: [35.4676, -97.5164],
   },
   {
@@ -114,10 +147,10 @@ export const projects: Project[] = [
       author: "T. Ruiz",
       role: "PW Director, City of Frisco",
     },
-    hero: img("frisco-hero", 2400, 1350),
-    before: img("frisco-before"),
-    after: img("frisco-after"),
-    drone: img("frisco-drone", 2400, 1350),
+    hero: u(road.roadH, 2400),
+    before: u(road.roadI),
+    after: u(road.roadJ),
+    drone: u(road.roadK, 2400),
     coords: [33.1507, -96.8236],
   },
   {
@@ -138,10 +171,10 @@ export const projects: Project[] = [
       author: "J. Albright",
       role: "Director of Operations, Port Houston",
     },
-    hero: img("port-hero", 2400, 1350),
-    before: img("port-before"),
-    after: img("port-after"),
-    drone: img("port-drone", 2400, 1350),
+    hero: u(road.construction1, 2400),
+    before: u(road.roadL),
+    after: u(road.roadM),
+    drone: u(road.roadN, 2400),
     coords: [29.7258, -95.2486],
   },
   {
@@ -162,10 +195,10 @@ export const projects: Project[] = [
       author: "A. Chen",
       role: "Regional Facilities, The Home Depot",
     },
-    hero: img("homedepot-hero", 2400, 1350),
-    before: img("homedepot-before"),
-    after: img("homedepot-after"),
-    drone: img("homedepot-drone", 2400, 1350),
+    hero: u(road.mountainRoad, 2400),
+    before: u(road.roadO),
+    after: u(road.roadP),
+    drone: u(road.roadQ, 2400),
     coords: [33.4484, -112.074],
   },
 ];
@@ -175,54 +208,54 @@ export const services = [
     id: "new-construction",
     name: "New Construction Paving",
     blurb: "Greenfield highways, runways, and heavy-civil lots paved to DOT and FAA tolerances.",
-    image: img("svc-newcon", 1600, 1000),
+    image: u(road.construction1, 1600),
   },
   {
     id: "mill-overlay",
     name: "Mill & Overlay",
     blurb: "Precision milling paired with single-pass paving to renew pavement life with minimum downtime.",
-    image: img("svc-mill", 1600, 1000),
+    image: u(road.aerialHwy, 1600),
   },
   {
     id: "fdr",
     name: "Full-Depth Reclamation",
     blurb: "Structural rehab that recycles existing pavement in place — faster, greener, cheaper.",
-    image: img("svc-fdr", 1600, 1000),
+    image: u(road.constructionSite, 1600),
   },
   {
     id: "micro-surfacing",
     name: "Micro-Surfacing",
     blurb: "Polymer-modified surface treatment that seals and re-textures pavement in a single pass.",
-    image: img("svc-micro", 1600, 1000),
+    image: u(road.roadR, 1600),
   },
   {
     id: "maintenance",
     name: "Seal Coat, Crack Seal & Striping",
     blurb: "Preventive maintenance programs that extend pavement life by years for pennies on the dollar.",
-    image: img("svc-maint", 1600, 1000),
+    image: u(road.roadS, 1600),
   },
   {
     id: "ada",
     name: "ADA Upgrades & Patching",
     blurb: "Ramp, detectable warning, and pavement patching work in full compliance with the 2010 Standards.",
-    image: img("svc-ada", 1600, 1000),
+    image: u(road.roadT, 1600),
   },
 ];
 
 export const sectors = [
-  { slug: "highways", name: "Federal & State Highways", summary: "Tier-1 prequalified for DOT mainline and corridor work across the Southwest.", image: img("sec-hwy", 2000, 1400) },
-  { slug: "airports", name: "Airports & Runways", summary: "FAA P-401 compliant paving on nighttime closure windows with zero tolerance for FOD.", image: img("sec-air", 2000, 1400) },
-  { slug: "ports-seaports", name: "Seaports & Intermodal", summary: "Heavy-duty surfacing engineered for container handlers, straddle carriers, and RTGs.", image: img("sec-port", 2000, 1400) },
-  { slug: "municipal", name: "Municipal Streets", summary: "Overlay programs, neighborhood reconstruction, and ADA compliance for cities and counties.", image: img("sec-muni", 2000, 1400) },
-  { slug: "commercial", name: "Commercial & Retail", summary: "Distribution yards, big-box lots, HOAs, and campuses — paved on your operating schedule.", image: img("sec-com", 2000, 1400) },
-  { slug: "industrial", name: "Industrial Facilities", summary: "Refineries, warehouses, and manufacturing plants with heavy wheel loading demands.", image: img("sec-ind", 2000, 1400) },
+  { slug: "highways", name: "Federal & State Highways", summary: "Tier-1 prequalified for DOT mainline and corridor work across the Southwest.", image: u(road.highwayAerial, 2000) },
+  { slug: "airports", name: "Airports & Runways", summary: "FAA P-401 compliant paving on nighttime closure windows with zero tolerance for FOD.", image: u(road.aerialHwy, 2000) },
+  { slug: "ports-seaports", name: "Seaports & Intermodal", summary: "Heavy-duty surfacing engineered for container handlers, straddle carriers, and RTGs.", image: u(road.constructionSite, 2000) },
+  { slug: "municipal", name: "Municipal Streets", summary: "Overlay programs, neighborhood reconstruction, and ADA compliance for cities and counties.", image: u(road.roadA, 2000) },
+  { slug: "commercial", name: "Commercial & Retail", summary: "Distribution yards, big-box lots, HOAs, and campuses — paved on your operating schedule.", image: u(road.roadC, 2000) },
+  { slug: "industrial", name: "Industrial Facilities", summary: "Refineries, warehouses, and manufacturing plants with heavy wheel loading demands.", image: u(road.construction1, 2000) },
 ];
 
 export const equipment = [
-  { name: "Vögele SUPER 2100-3i Pavers", spec: "35-ft variable-width paving · AutoSet Plus · PaveDock Assist", image: img("eq-paver", 1600, 1000) },
-  { name: "Hamm HD+ Tandem Rollers", spec: "Intelligent compaction · Oscillation · HCQ-GPS mapping", image: img("eq-roller", 1600, 1000) },
-  { name: "Wirtgen W 210 Fi Cold Mills", spec: "3D level control · Mill Assist · closed-loop emissions", image: img("eq-mill", 1600, 1000) },
-  { name: "Roadtec SB-3000 Shuttle Buggies", spec: "Anti-segregation material transfer for smoothness pay-item work", image: img("eq-sb", 1600, 1000) },
+  { name: "Vögele SUPER 2100-3i Pavers", spec: "35-ft variable-width paving · AutoSet Plus · PaveDock Assist", image: u(road.constructionSite, 1600) },
+  { name: "Hamm HD+ Tandem Rollers", spec: "Intelligent compaction · Oscillation · HCQ-GPS mapping", image: u(road.construction1, 1600) },
+  { name: "Wirtgen W 210 Fi Cold Mills", spec: "3D level control · Mill Assist · closed-loop emissions", image: u(road.roadD, 1600) },
+  { name: "Roadtec SB-3000 Shuttle Buggies", spec: "Anti-segregation material transfer for smoothness pay-item work", image: u(road.roadE, 1600) },
 ];
 
 export const processSteps = [
@@ -270,18 +303,19 @@ export const careersOpenings = [
 ];
 
 export const resources = [
-  { slug: "how-long-does-asphalt-last", title: "How Long Does Asphalt Actually Last?", excerpt: "A truthful look at pavement lifespan — what we see on real DOT lots vs. what you read in a spec sheet.", date: "2026-03-18", readMin: 6, image: img("res-life", 1600, 1000) },
-  { slug: "seal-coat-vs-repave", title: "Seal Coat vs. Repave: A Decision Framework", excerpt: "Four signals that tell you whether a seal coat buys you another 5 years — or is money thrown at a dead surface.", date: "2026-02-04", readMin: 5, image: img("res-seal", 1600, 1000) },
-  { slug: "maintenance-playbook", title: "The Commercial Property Maintenance Playbook", excerpt: "A year-by-year calendar for keeping a 10-acre commercial lot out of the full-reconstruction category.", date: "2026-01-12", readMin: 8, image: img("res-maint", 1600, 1000) },
+  { slug: "how-long-does-asphalt-last", title: "How Long Does Asphalt Actually Last?", excerpt: "A truthful look at pavement lifespan — what we see on real DOT lots vs. what you read in a spec sheet.", date: "2026-03-18", readMin: 6, image: u(road.roadI, 1600) },
+  { slug: "seal-coat-vs-repave", title: "Seal Coat vs. Repave: A Decision Framework", excerpt: "Four signals that tell you whether a seal coat buys you another 5 years — or is money thrown at a dead surface.", date: "2026-02-04", readMin: 5, image: u(road.roadJ, 1600) },
+  { slug: "maintenance-playbook", title: "The Commercial Property Maintenance Playbook", excerpt: "A year-by-year calendar for keeping a 10-acre commercial lot out of the full-reconstruction category.", date: "2026-01-12", readMin: 8, image: u(road.roadK, 1600) },
 ];
 
-// Editorial/gallery image set used across the site
+// Editorial/gallery image set used across the site.
+// heroMain = the full-bleed hero image — must be a road/paving image.
 export const gallery = {
-  heroMain: img("hero-main", 2800, 1500),
-  craft: img("craft-roller", 2000, 1200),
-  rail1: img("rail1", 1400, 1800),
-  rail2: img("rail2", 1800, 1200),
-  rail3: img("rail3", 1800, 1200),
-  crew: img("crew", 1600, 2000),
-  community: img("community", 1800, 1300),
+  heroMain: u(road.heroHighway, 2800),
+  craft: u(road.construction1, 2000),
+  rail1: u(road.constructionSite, 1400),
+  rail2: u(road.windingRoad, 1800),
+  rail3: u(road.aerialHwy, 1800),
+  crew: u(road.constructionSite, 1600),
+  community: u(road.mountainRoad, 1800),
 };
