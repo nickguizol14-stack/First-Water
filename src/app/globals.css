@@ -3,8 +3,9 @@
 @tailwind utilities;
 
 :root {
-  --bg: #0a0a0b;
-  --fg: #f5f5f5;
+  --bg: #fbfaf7;
+  --fg: #0b0c0e;
+  --line: #e2dccb;
 }
 
 html {
@@ -16,6 +17,12 @@ body {
   color: var(--fg);
   font-family: var(--font-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
+  font-feature-settings: "ss01", "cv11";
+}
+
+::selection {
+  background: #0b0c0e;
+  color: #fbfaf7;
 }
 
 @layer utilities {
@@ -25,31 +32,47 @@ body {
   .text-pretty {
     text-wrap: pretty;
   }
-  .grain::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.35 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-    opacity: 0.12;
-    mix-blend-mode: overlay;
-  }
-  .mask-fade-b {
-    mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
-  }
   .section-pad {
-    @apply py-24 md:py-32;
+    @apply py-28 md:py-40;
   }
   .container-x {
-    @apply mx-auto w-full max-w-7xl px-6 md:px-10;
+    @apply mx-auto w-full max-w-[1380px] px-6 md:px-10;
   }
   .eyebrow {
-    @apply text-[11px] uppercase tracking-[0.28em] text-ember-500 font-semibold;
+    @apply text-[11px] uppercase tracking-[0.32em] text-ember-500 font-medium;
   }
   .btn-primary {
-    @apply inline-flex items-center gap-2 rounded-full bg-ember-500 px-6 py-3 text-sm font-semibold text-asphalt-950 transition hover:bg-ember-600 hover:-translate-y-0.5;
+    @apply inline-flex items-center gap-2 rounded-full bg-ink-950 px-6 py-3 text-sm font-medium text-cream-50 transition hover:bg-ember-500 hover:-translate-y-0.5;
   }
   .btn-ghost {
-    @apply inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white hover:text-asphalt-950;
+    @apply inline-flex items-center gap-2 rounded-full border border-ink-950/25 px-6 py-3 text-sm font-medium text-ink-950 transition hover:bg-ink-950 hover:text-cream-50;
   }
+  .btn-dark-ghost {
+    @apply inline-flex items-center gap-2 rounded-full border border-cream-50/30 px-6 py-3 text-sm font-medium text-cream-50 transition hover:bg-cream-50 hover:text-ink-950;
+  }
+  .serif {
+    font-family: var(--font-display), serif;
+    font-feature-settings: "ss01";
+  }
+  .rule {
+    @apply h-px w-full bg-ink-200;
+  }
+  .chip {
+    @apply inline-flex items-center rounded-full border border-ink-950/15 bg-white/60 px-3 py-1 text-[10px] uppercase tracking-[0.24em] text-ink-700 backdrop-blur;
+  }
+  .hairline-t {
+    border-top: 1px solid var(--line);
+  }
+  .hairline-b {
+    border-bottom: 1px solid var(--line);
+  }
+}
+
+/* Reveal clip animation for images */
+.clip-reveal {
+  clip-path: inset(100% 0% 0% 0%);
+  transition: clip-path 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.clip-reveal.is-visible {
+  clip-path: inset(0% 0% 0% 0%);
 }

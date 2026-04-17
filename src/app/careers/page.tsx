@@ -1,6 +1,6 @@
-import Image from "next/image";
 import { SectionHeading } from "@/components/section-heading";
 import { Reveal } from "@/components/reveal";
+import { ScrollImage } from "@/components/scroll-image";
 import { CtaBand } from "@/components/cta-band";
 import { careersOpenings } from "@/lib/data";
 import { ArrowUpRight } from "lucide-react";
@@ -19,47 +19,47 @@ const perks = [
 export default function CareersPage() {
   return (
     <>
-      <section className="relative pt-32 pb-20 isolate overflow-hidden">
-        <div className="absolute inset-0 -z-10">
-          <Image
-            src="https://images.unsplash.com/photo-1541873676-a18131494184?q=80&w=2400&auto=format&fit=crop"
-            alt="Crew at work"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover"
+      <section className="pt-40 md:pt-48 pb-12">
+        <div className="container-x">
+          <SectionHeading
+            eyebrow="— Careers"
+            title="Long careers on the road, not short ones on a job site."
+            subtitle="Paver operators, foremen, CDL drivers, PMs, and QC techs — we hire crews for careers, not seasons. Average tenure: 11 years."
           />
-          <div className="absolute inset-0 bg-asphalt-950/70" />
         </div>
-        <div className="container-x pt-16">
-          <div className="eyebrow mb-4">Careers</div>
-          <h1 className="font-display text-5xl md:text-7xl text-balance max-w-4xl">
-            Long careers on the road, not short ones on a job site.
-          </h1>
-          <p className="mt-6 max-w-2xl text-lg text-white/80">
-            Paver operators, foremen, CDL drivers, PMs, and QC techs — we hire crews for careers,
-            not seasons. Average tenure: 11 years.
-          </p>
+      </section>
+
+      <section className="pb-16">
+        <div className="container-x">
+          <ScrollImage
+            src="https://images.unsplash.com/photo-1541873676-a18131494184?q=80&w=2600&auto=format&fit=crop"
+            alt="Crew at work"
+            aspect="aspect-[21/9]"
+            priority
+            parallax={8}
+          />
         </div>
       </section>
 
       <section className="section-pad">
         <div className="container-x">
-          <SectionHeading eyebrow="Open roles" title="Now hiring across the Southwest." />
-          <div className="mt-14 divide-y divide-white/10 border border-white/10 rounded-2xl overflow-hidden">
+          <SectionHeading eyebrow="— Open Roles" title="Now hiring across the Southwest." />
+          <div className="mt-14 border-t border-ink-200">
             {careersOpenings.map((o, i) => (
               <Reveal key={o.title + o.location} delay={i * 0.03}>
                 <a
                   href="mailto:careers@fwcis.com?subject=Application"
-                  className="group flex items-center justify-between gap-6 px-7 py-6 bg-asphalt-800 hover:bg-asphalt-700 transition"
+                  className="group flex items-center justify-between gap-6 py-7 border-b border-ink-200 transition hover:bg-cream-100 px-3 -mx-3 rounded-lg"
                 >
                   <div>
-                    <div className="font-display text-2xl">{o.title}</div>
-                    <div className="text-xs uppercase tracking-[0.22em] text-white/50 mt-1">
+                    <div className="serif text-2xl md:text-[28px] text-ink-950 leading-tight">
+                      {o.title}
+                    </div>
+                    <div className="text-[11px] uppercase tracking-[0.26em] text-ink-500 mt-2">
                       {o.location} · {o.type}
                     </div>
                   </div>
-                  <div className="h-10 w-10 shrink-0 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-ember-500 group-hover:border-ember-500 group-hover:text-asphalt-950 transition">
+                  <div className="h-11 w-11 shrink-0 rounded-full border border-ink-950/20 flex items-center justify-center group-hover:bg-ink-950 group-hover:text-cream-50 transition">
                     <ArrowUpRight className="h-4 w-4" />
                   </div>
                 </a>
@@ -69,15 +69,15 @@ export default function CareersPage() {
         </div>
       </section>
 
-      <section className="section-pad bg-asphalt-900/60">
+      <section className="section-pad bg-cream-100">
         <div className="container-x">
-          <SectionHeading eyebrow="Benefits" title="Why our crews stay." />
-          <div className="mt-14 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <SectionHeading eyebrow="— Benefits" title="Why our crews stay." />
+          <div className="mt-14 grid gap-px md:grid-cols-2 lg:grid-cols-3 bg-ink-200 border border-ink-200 rounded-2xl overflow-hidden">
             {perks.map((p, i) => (
               <Reveal key={p} delay={i * 0.04}>
-                <div className="rounded-2xl border border-white/10 bg-asphalt-800 p-5">
-                  <div className="h-2 w-2 rounded-full bg-ember-500 mb-3" />
-                  <div className="text-white/90">{p}</div>
+                <div className="bg-cream-50 p-6">
+                  <div className="h-1.5 w-1.5 rounded-full bg-ember-500 mb-3" />
+                  <div className="text-ink-950">{p}</div>
                 </div>
               </Reveal>
             ))}

@@ -1,7 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { resources } from "@/lib/data";
+import { ScrollImage } from "@/components/scroll-image";
 import { CtaBand } from "@/components/cta-band";
 import { ArrowLeft } from "lucide-react";
 
@@ -37,50 +37,54 @@ export default async function ResourcePage({ params }: { params: Promise<{ slug:
   if (!r) notFound();
   return (
     <>
-      <section className="pt-32 pb-10">
+      <section className="pt-32 md:pt-40 pb-12">
         <div className="container-x">
           <Link
             href="/resources"
-            className="inline-flex items-center gap-2 text-sm text-white/60 hover:text-white transition"
+            className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.24em] text-ink-500 hover:text-ink-950 transition"
           >
-            <ArrowLeft className="h-4 w-4" /> All Resources
+            <ArrowLeft className="h-3.5 w-3.5" /> All Resources
           </Link>
-          <div className="max-w-3xl mt-8">
-            <div className="eyebrow mb-4">
-              {new Date(r.date).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })} · {r.readMin} min read
+          <div className="max-w-3xl mt-10">
+            <div className="eyebrow mb-5">
+              — {new Date(r.date).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })} · {r.readMin} min read
             </div>
-            <h1 className="font-display text-5xl md:text-7xl leading-[0.95] text-balance">{r.title}</h1>
-            <p className="mt-6 text-lg text-white/75">{r.excerpt}</p>
+            <h1 className="serif font-medium tracking-[-0.02em] text-[clamp(2.4rem,6vw,5rem)] leading-[0.96] text-balance">
+              {r.title}
+            </h1>
+            <p className="mt-8 text-lg md:text-xl text-ink-600 leading-relaxed">{r.excerpt}</p>
           </div>
         </div>
       </section>
 
       <section className="pb-16">
         <div className="container-x">
-          <div className="relative aspect-[21/9] rounded-2xl overflow-hidden border border-white/10">
-            <Image src={r.image} alt={r.title} fill priority sizes="100vw" className="object-cover" />
-          </div>
+          <ScrollImage
+            src={r.image}
+            alt={r.title}
+            aspect="aspect-[21/9]"
+            priority
+            parallax={8}
+          />
         </div>
       </section>
 
       <section className="pb-24">
         <div className="container-x max-w-3xl">
-          <article className="prose prose-invert prose-headings:font-display prose-p:text-white/80 prose-p:leading-relaxed">
-            {body.trim().split("\n\n").map((para, i) => {
-              if (para.startsWith("## ")) {
-                return (
-                  <h2 key={i} className="font-display text-3xl mt-10 mb-4">
-                    {para.replace(/^## /, "")}
-                  </h2>
-                );
-              }
+          {body.trim().split("\n\n").map((para, i) => {
+            if (para.startsWith("## ")) {
               return (
-                <p key={i} className="mt-5 text-lg text-white/80 leading-relaxed">
-                  {para}
-                </p>
+                <h2 key={i} className="serif text-3xl md:text-4xl mt-14 mb-4 text-ink-950">
+                  {para.replace(/^## /, "")}
+                </h2>
               );
-            })}
-          </article>
+            }
+            return (
+              <p key={i} className="mt-6 text-lg text-ink-700 leading-relaxed">
+                {para}
+              </p>
+            );
+          })}
         </div>
       </section>
 

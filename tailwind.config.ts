@@ -5,30 +5,36 @@ export default {
   theme: {
     extend: {
       colors: {
-        asphalt: {
-          950: "#0a0a0b",
-          900: "#111113",
-          800: "#1a1a1d",
-          700: "#26262b",
-          600: "#3a3a40",
-          500: "#55555c",
-          400: "#8a8a92",
-          300: "#b6b6bc",
+        cream: {
+          50: "#fbfaf7",
+          100: "#f6f3ec",
+          200: "#eeeadf",
+          300: "#e2dccb",
+        },
+        ink: {
+          950: "#0b0c0e",
+          900: "#14161a",
+          800: "#1f2127",
+          700: "#2d3038",
+          600: "#4a4e58",
+          500: "#6b6f76",
+          400: "#9a9ea6",
+          300: "#c4c7cd",
+          200: "#e6e4dd",
         },
         ember: {
-          500: "#f59e0b",
-          600: "#d97706",
-          700: "#b45309",
+          500: "#c2410c",
+          600: "#9a3412",
+          700: "#7c2d12",
         },
       },
       fontFamily: {
-        display: ["var(--font-display)", "sans-serif"],
+        display: ["var(--font-display)", "serif"],
         sans: ["var(--font-sans)", "sans-serif"],
       },
       animation: {
         "fade-up": "fade-up 0.8s ease-out forwards",
-        "slow-pan": "slow-pan 20s ease-in-out infinite alternate",
-        shimmer: "shimmer 2s linear infinite",
+        "slow-pan": "slow-pan 26s ease-in-out infinite alternate",
       },
       keyframes: {
         "fade-up": {
@@ -36,12 +42,8 @@ export default {
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
         "slow-pan": {
-          "0%": { transform: "scale(1.05) translate(0,0)" },
-          "100%": { transform: "scale(1.15) translate(-2%,-2%)" },
-        },
-        shimmer: {
-          "0%": { backgroundPosition: "-200% 0" },
-          "100%": { backgroundPosition: "200% 0" },
+          "0%": { transform: "scale(1.08) translate(0,0)" },
+          "100%": { transform: "scale(1.16) translate(-2%,-1%)" },
         },
       },
     },

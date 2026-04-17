@@ -1,14 +1,14 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { projects, type Project } from "@/lib/data";
 import { ArrowUpRight } from "lucide-react";
+import { ScrollImage } from "./scroll-image";
 
 const filters: { id: Project["sector"] | "all"; label: string }[] = [
-  { id: "all", label: "All Projects" },
+  { id: "all", label: "All" },
   { id: "highway", label: "Highway" },
   { id: "airport", label: "Airport" },
   { id: "municipal", label: "Municipal" },
@@ -25,15 +25,15 @@ export function ProjectGrid() {
 
   return (
     <>
-      <div className="flex flex-wrap gap-2 mb-12">
+      <div className="flex flex-wrap gap-1.5 mb-12">
         {filters.map((f) => (
           <button
             key={f.id}
             onClick={() => setActive(f.id)}
-            className={`rounded-full px-4 py-2 text-xs uppercase tracking-[0.2em] border transition ${
+            className={`rounded-full px-5 py-2 text-[11px] uppercase tracking-[0.24em] transition ${
               active === f.id
-                ? "bg-ember-500 border-ember-500 text-asphalt-950"
-                : "border-white/15 text-white/70 hover:border-white/40 hover:text-white"
+                ? "bg-ink-950 text-cream-50"
+                : "bg-transparent text-ink-500 hover:text-ink-950 border border-ink-200"
             }`}
           >
             {f.label}
@@ -41,57 +41,41 @@ export function ProjectGrid() {
         ))}
       </div>
 
-      <motion.div layout className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <motion.div layout className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         <AnimatePresence mode="popLayout">
           {visible.map((p, i) => (
             <motion.div
               key={p.slug}
               layout
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -12 }}
-              transition={{ duration: 0.5, delay: i * 0.04 }}
+              transition={{ duration: 0.7, delay: i * 0.05, ease: [0.22, 1, 0.36, 1] }}
             >
-              <Link
-                href={`/projects/${p.slug}`}
-                className="group block relative overflow-hidden rounded-2xl border border-white/10 bg-asphalt-800"
-              >
-                <div className="aspect-[4/5] relative overflow-hidden">
-                  <Image
-                    src={p.hero}
-                    alt={p.name}
-                    fill
-                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                    className="object-cover transition duration-[1400ms] group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-asphalt-950 via-asphalt-950/30 to-transparent" />
-                  <div className="absolute top-4 left-4 text-[10px] uppercase tracking-[0.24em] bg-black/50 backdrop-blur px-3 py-1 rounded-full">
-                    {p.sectorLabel}
+              <Link href={`/projects/${p.slug}`} className="group block">
+                <ScrollImage
+                  src={p.hero}
+                  alt={p.name}
+                  aspect="aspect-[4/5]"
+                  rounded="rounded-2xl"
+                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                  parallax={6}
+                  overlay
+                />
+                <div className="mt-5 flex items-start justify-between gap-4">
+                  <div>
+                    <div className="text-[11px] uppercase tracking-[0.24em] text-ember-500">
+                      {p.sectorLabel} · {p.location}
+                    </div>
+                    <div className="serif text-2xl md:text-[26px] leading-tight mt-2 text-ink-950 text-balance">
+                      {p.name}
+                    </div>
+                    <div className="mt-3 text-[12px] text-ink-500">
+                      {p.tonnage} · {p.timeline}
+                    </div>
                   </div>
-                  <div className="absolute bottom-0 inset-x-0 p-5">
-                    <div className="flex items-start justify-between gap-3">
-                      <div>
-                        <div className="text-white/60 text-xs uppercase tracking-[0.18em] mb-1">
-                          {p.location}
-                        </div>
-                        <div className="font-display text-2xl leading-tight text-balance">
-                          {p.name}
-                        </div>
-                      </div>
-                      <div className="mt-1 h-9 w-9 shrink-0 rounded-full border border-white/20 flex items-center justify-center transition group-hover:bg-ember-500 group-hover:border-ember-500 group-hover:text-asphalt-950">
-                        <ArrowUpRight className="h-4 w-4" />
-                      </div>
-                    </div>
-                    <div className="mt-4 flex flex-wrap gap-1.5">
-                      {p.serviceTypes.map((s) => (
-                        <span
-                          key={s}
-                          className="text-[10px] uppercase tracking-[0.2em] text-white/70 border border-white/15 px-2 py-1 rounded-full"
-                        >
-                          {s}
-                        </span>
-                      ))}
-                    </div>
+                  <div className="mt-1 h-10 w-10 shrink-0 rounded-full border border-ink-950/20 flex items-center justify-center transition group-hover:bg-ink-950 group-hover:text-cream-50">
+                    <ArrowUpRight className="h-4 w-4" />
                   </div>
                 </div>
               </Link>

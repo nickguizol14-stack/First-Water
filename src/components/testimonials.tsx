@@ -9,31 +9,32 @@ const logos = ["TxDOT", "Costco", "DFW", "Home Depot", "Port Houston", "City of 
 export function Testimonials() {
   return (
     <>
-      <div className="grid gap-6 md:grid-cols-3 mb-12">
+      <div className="grid gap-px bg-ink-200 md:grid-cols-3 border border-ink-200 rounded-2xl overflow-hidden mb-16">
         {testimonials.map((t, i) => (
           <Reveal key={t.author} delay={i * 0.08}>
             <motion.blockquote
-              whileHover={{ y: -4 }}
-              className="rounded-2xl border border-white/10 bg-asphalt-800 p-7 h-full flex flex-col"
+              whileHover={{ y: -2 }}
+              className="bg-cream-50 p-9 h-full flex flex-col"
             >
-              <div className="text-ember-500 text-4xl font-display leading-none">“</div>
-              <p className="text-lg mt-2 text-white/90 flex-1">{t.quote}</p>
-              <div className="mt-5 border-t border-white/10 pt-4">
-                <div className="font-semibold">{t.author}</div>
-                <div className="text-xs text-white/60 mt-0.5">{t.role}</div>
-              </div>
+              <div className="serif text-ember-500 text-6xl leading-none">“</div>
+              <p className="serif text-xl md:text-[22px] mt-2 text-ink-950 leading-snug flex-1 text-balance">
+                {t.quote}
+              </p>
+              <footer className="mt-7 pt-5 border-t border-ink-200">
+                <div className="text-sm text-ink-950 font-medium">{t.author}</div>
+                <div className="text-[11px] uppercase tracking-[0.24em] text-ink-500 mt-1">
+                  {t.role}
+                </div>
+              </footer>
             </motion.blockquote>
           </Reveal>
         ))}
       </div>
       <Reveal>
-        <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-5 opacity-70">
+        <div className="flex flex-wrap items-center justify-center gap-x-14 gap-y-6 opacity-60">
           {logos.map((l) => (
-            <div
-              key={l}
-              className="font-display text-2xl tracking-widest text-white/60"
-            >
-              {l.toUpperCase()}
+            <div key={l} className="serif text-2xl tracking-tight text-ink-500">
+              {l}
             </div>
           ))}
         </div>

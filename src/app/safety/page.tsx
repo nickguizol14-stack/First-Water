@@ -7,66 +7,50 @@ import { ShieldCheck, BadgeCheck, HardHat, Leaf } from "lucide-react";
 export const metadata = { title: "Safety & Certifications" };
 
 const pillars = [
-  {
-    icon: HardHat,
-    title: "Safety-first culture",
-    copy: "EMR of 0.68 across the last three years. Daily toolbox talks. Every crew lead OSHA-30 certified.",
-  },
-  {
-    icon: BadgeCheck,
-    title: "Prequalified & credentialed",
-    copy: "DOT prequalified in 5 states. FAA P-401 paving certified. NAPA Diamond commendation.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Quality control built in",
-    copy: "In-house Strategic Highway Research Program lab. Every mat sampled, every roller mapped.",
-  },
-  {
-    icon: Leaf,
-    title: "Sustainability",
-    copy: "RAP and RAS incorporation, warm-mix asphalt by default, and full-depth reclamation as a first option.",
-  },
+  { icon: HardHat, title: "Safety-first culture", copy: "EMR of 0.68 across the last three years. Daily toolbox talks. Every crew lead OSHA-30 certified." },
+  { icon: BadgeCheck, title: "Prequalified & credentialed", copy: "DOT prequalified in 5 states. FAA P-401 paving certified. NAPA Diamond commendation." },
+  { icon: ShieldCheck, title: "Quality control built in", copy: "In-house SHRP-qualified lab. Every mat sampled, every roller mapped." },
+  { icon: Leaf, title: "Sustainability", copy: "RAP and RAS incorporation, warm-mix asphalt by default, and full-depth reclamation as a first option." },
 ];
 
 export default function SafetyPage() {
   return (
     <>
-      <section className="pt-40 pb-16">
+      <section className="pt-40 md:pt-48 pb-16">
         <div className="container-x">
           <SectionHeading
-            eyebrow="Safety · Quality · Compliance"
+            eyebrow="— Safety · Quality · Compliance"
             title="Credentials that let us work the biggest lots in the country."
           />
         </div>
       </section>
 
       <section className="pb-24">
-        <div className="container-x grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div className="container-x grid gap-px md:grid-cols-2 lg:grid-cols-4 bg-ink-200 border border-ink-200 rounded-2xl overflow-hidden">
           {pillars.map((p, i) => (
             <Reveal key={p.title} delay={i * 0.05}>
-              <div className="rounded-2xl border border-white/10 bg-asphalt-800 p-7 h-full">
-                <p.icon className="h-8 w-8 text-ember-500" />
-                <div className="mt-5 font-display text-2xl">{p.title}</div>
-                <p className="mt-2 text-sm text-white/70 leading-relaxed">{p.copy}</p>
+              <div className="bg-cream-50 p-8 h-full">
+                <p.icon className="h-7 w-7 text-ember-500" />
+                <div className="mt-6 serif text-2xl text-ink-950">{p.title}</div>
+                <p className="mt-3 text-[15px] text-ink-600 leading-relaxed">{p.copy}</p>
               </div>
             </Reveal>
           ))}
         </div>
       </section>
 
-      <section className="pb-24 bg-asphalt-900/60 py-20">
+      <section className="section-pad bg-cream-100">
         <div className="container-x">
-          <SectionHeading eyebrow="Certifications" title="Credentials on file." />
+          <SectionHeading eyebrow="— Certifications" title="Credentials on file." />
           <Reveal>
             <ul className="mt-14 grid gap-3 md:grid-cols-2">
               {certifications.map((c) => (
                 <li
                   key={c}
-                  className="flex items-start gap-3 rounded-xl border border-white/10 bg-asphalt-800 p-5"
+                  className="flex items-start gap-3 rounded-xl border border-ink-200 bg-cream-50 p-5"
                 >
                   <BadgeCheck className="h-5 w-5 text-ember-500 shrink-0 mt-0.5" />
-                  <span className="text-white/85">{c}</span>
+                  <span className="text-ink-950">{c}</span>
                 </li>
               ))}
             </ul>

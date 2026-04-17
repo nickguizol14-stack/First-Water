@@ -7,11 +7,11 @@ export const metadata = { title: "Sectors" };
 export default function SectorsPage() {
   return (
     <>
-      <section className="pt-40 pb-16">
+      <section className="pt-40 md:pt-48 pb-12">
         <div className="container-x">
           <SectionHeading
-            eyebrow="Sectors"
-            title="We pave across every heavy-civil vertical."
+            eyebrow="— Sectors"
+            title="Every heavy-civil vertical."
             subtitle="The mix, the crew, the schedule, the paperwork — tuned for your sector before we mobilize."
           />
         </div>

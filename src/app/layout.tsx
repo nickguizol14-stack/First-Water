@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Bebas_Neue } from "next/font/google";
+import { Inter, Fraunces } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -10,11 +10,11 @@ const sans = Inter({
   display: "swap",
 });
 
-const display = Bebas_Neue({
-  weight: "400",
+const display = Fraunces({
   subsets: ["latin"],
   variable: "--font-display",
   display: "swap",
+  axes: ["opsz"],
 });
 
 export const metadata: Metadata = {
@@ -34,7 +34,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${sans.variable} ${display.variable}`}>
-      <body className="bg-asphalt-950 text-white">
+      <body className="bg-cream-50 text-ink-950 overflow-x-hidden">
         <SiteHeader />
         <main>{children}</main>
         <SiteFooter />

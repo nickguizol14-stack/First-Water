@@ -5,7 +5,11 @@
       "Bash(vercel whoami *)",
       "Bash(npx --yes create-next-app@latest . --typescript --tailwind --app --eslint --src-dir --import-alias \"@/*\" --turbopack --use-npm --yes)",
       "Bash(npm install *)",
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "Bash(gh auth *)",
+      "Bash(gh repo *)",
+      "Bash(vercel link *)",
+      "Bash(vercel --prod --yes)"
     ]
   }
 }
