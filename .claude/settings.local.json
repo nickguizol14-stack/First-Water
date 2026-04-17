@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(vercel --version)",
+      "Bash(vercel whoami *)",
+      "Bash(npx --yes create-next-app@latest . --typescript --tailwind --app --eslint --src-dir --import-alias \"@/*\" --turbopack --use-npm --yes)",
+      "Bash(npm install *)",
+      "Bash(npm run *)"
+    ]
+  }
+}
