@@ -13,7 +13,8 @@ export default function ResourcesPage() {
       <section className="pt-40 md:pt-48 pb-12">
         <div className="container-x">
           <SectionHeading
-            eyebrow="— Resources"
+            index="01"
+            eyebrow="Resources"
             title="Field notes from the road."
             subtitle="Straight answers on pavement life, maintenance strategy, and when to spend."
           />
@@ -32,14 +33,14 @@ export default function ResourcesPage() {
                   parallax={6}
                   reveal="clip-up"
                 />
-                <div className="mt-5">
-                  <div className="text-[11px] uppercase tracking-[0.26em] text-ink-500">
+                <div className="mt-5 border-t border-white/10 pt-5">
+                  <div className="mono text-[11px] uppercase tracking-[0.26em] text-hivis-500 tabular-nums">
                     {new Date(r.date).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })} · {r.readMin} min read
                   </div>
-                  <div className="serif text-2xl md:text-[26px] mt-3 text-ink-950 leading-tight text-balance">
+                  <div className="font-display font-extrabold uppercase text-xl md:text-2xl mt-3 text-white leading-tight tracking-wide text-balance group-hover:text-hivis-500 transition">
                     {r.title}
                   </div>
-                  <p className="mt-3 text-[15px] text-ink-600 leading-relaxed">{r.excerpt}</p>
+                  <p className="mt-3 text-[15px] text-white/60 leading-relaxed">{r.excerpt}</p>
                 </div>
               </Link>
             </Reveal>

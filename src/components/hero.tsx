@@ -4,7 +4,8 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
-import { ArrowUpRight, PlayCircle } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
+import { gallery } from "@/lib/data";
 
 const stats = [
   { k: "4,200+", v: "Lane-miles paved" },
@@ -19,92 +20,112 @@ export function Hero() {
     target: ref,
     offset: ["start start", "end start"],
   });
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "18%"]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
-  const fade = useTransform(scrollYProgress, [0, 1], [1, 0.3]);
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "22%"]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
 
   return (
-    <section ref={ref} className="relative isolate">
-      <div className="container-x pt-36 md:pt-44 pb-10">
-        <div className="flex items-center gap-4 mb-10">
-          <span className="h-px flex-1 bg-ink-200" />
-          <span className="eyebrow">Est. 1988 · Southwest corridor</span>
-          <span className="h-px flex-1 bg-ink-200" />
+    <section ref={ref} className="relative isolate overflow-hidden pt-[79px]">
+      {/* Full bleed industrial background image with parallax */}
+      <div className="absolute inset-0 -z-10">
+        <motion.div style={{ y, scale }} className="absolute inset-0 will-change-transform">
+          <Image
+            src={gallery.heroMain}
+            alt="First Water paving operation"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover img-industrial"
+          />
+        </motion.div>
+        <div className="absolute inset-0 bg-gradient-to-r from-tar-950 via-tar-950/80 to-tar-950/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-tar-950 via-transparent to-tar-950/40" />
+        <div className="absolute inset-0 bg-grid opacity-60" />
+      </div>
+
+      <div className="container-x min-h-[92vh] flex flex-col justify-between pt-12 pb-10">
+        {/* Top meta */}
+        <motion.div
+          initial={{ opacity: 0, y: -8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="flex items-center gap-3 mono text-[11px] uppercase tracking-[0.26em] text-white/55"
+        >
+          <span className="relative flex h-2 w-2">
+            <span className="absolute inset-0 rounded-full bg-hivis-500 animate-ping" />
+            <span className="relative h-2 w-2 rounded-full bg-hivis-500" />
+          </span>
+          <span>Live · I-35 Corridor · Waco TX</span>
+          <span className="hidden md:inline mx-2 text-white/30">//</span>
+          <span className="hidden md:inline">Southwest heavy-civil paving · Est. 1988</span>
+        </motion.div>
+
+        {/* Massive headline */}
+        <div className="py-16 md:py-24">
+          <div className="flex items-center gap-4 mb-8">
+            <span className="h-px w-12 bg-hivis-500" />
+            <span className="eyebrow">Asphalt · Highways · Runways · Heavy Civil</span>
+          </div>
+          <motion.h1
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+            className="font-display font-black uppercase leading-[0.86] tracking-[-0.02em] text-white"
+            style={{ fontSize: "clamp(2.8rem, 9.5vw, 9.5rem)" }}
+          >
+            We pave <br />
+            <span className="inline-flex items-center gap-4 md:gap-6">
+              the miles
+            </span>{" "}
+            <br />
+            that <span className="text-hivis-500">move</span> the country.
+          </motion.h1>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.35 }}
+            className="mt-10 md:mt-12 grid gap-8 md:grid-cols-[1.3fr_1fr] md:items-end"
+          >
+            <p className="max-w-xl text-base md:text-lg text-white/75 leading-relaxed">
+              4,200+ lane-miles of highway. 11,000 ft of live runway. 410 acres of commercial
+              yard — paved to spec, delivered on schedule, built to outlast the warranty.
+            </p>
+            <div className="flex flex-wrap items-center gap-3 md:justify-end">
+              <Link href="/contact" className="btn-primary">
+                Request a Quote <ArrowUpRight className="h-4 w-4" />
+              </Link>
+              <Link href="/projects" className="btn-ghost">
+                View Our Work
+              </Link>
+            </div>
+          </motion.div>
         </div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
-          className="serif text-[13vw] sm:text-[12vw] md:text-[10vw] lg:text-[9.4vw] leading-[0.92] tracking-[-0.02em] text-balance text-ink-950 font-medium"
-        >
-          We pave the miles
-          <br />
-          <span className="italic text-ember-500">that move</span> the country.
-        </motion.h1>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="mt-12 grid gap-8 md:grid-cols-[1.2fr_1fr] md:items-end"
-        >
-          <p className="max-w-xl text-lg md:text-xl text-ink-700 leading-relaxed text-pretty">
-            4,200+ lane-miles of highway. 11,000 ft of live runway. 410 acres of commercial yard —
-            paved to spec, delivered on schedule, built to outlast the warranty.
-          </p>
-          <div className="flex flex-wrap items-center gap-3 md:justify-end">
-            <Link href="/contact" className="btn-primary">
-              Request a Quote <ArrowUpRight className="h-4 w-4" />
-            </Link>
-            <Link href="/projects" className="btn-ghost">
-              <PlayCircle className="h-4 w-4" /> View Our Work
-            </Link>
+        {/* Stats rail */}
+        <div className="border-t border-white/10 pt-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {stats.map((s, i) => (
+              <motion.div
+                key={s.v}
+                initial={{ opacity: 0, y: 14 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.25 + i * 0.07 }}
+                className="flex items-start gap-4"
+              >
+                <div className="mono text-[11px] text-hivis-500 mt-1.5 tabular-nums">
+                  0{i + 1}
+                </div>
+                <div>
+                  <div className="font-display font-black text-4xl md:text-5xl text-white tabular-nums tracking-tight">
+                    {s.k}
+                  </div>
+                  <div className="mono text-[11px] uppercase tracking-[0.22em] text-white/50 mt-1.5">
+                    {s.v}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
-        </motion.div>
-      </div>
-
-      <div className="container-x pb-20 md:pb-28">
-        <motion.div
-          initial={{ clipPath: "inset(20% 10% 20% 10%)" }}
-          animate={{ clipPath: "inset(0% 0% 0% 0%)" }}
-          transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-          className="relative aspect-[21/9] w-full overflow-hidden rounded-3xl"
-        >
-          <motion.div style={{ y, scale }} className="absolute inset-0 will-change-transform">
-            <Image
-              src="https://images.unsplash.com/photo-1617886322207-6f504e7472e4?q=80&w=2800&auto=format&fit=crop"
-              alt="Paver laying fresh asphalt at sunset"
-              fill
-              priority
-              sizes="100vw"
-              className="object-cover"
-            />
-          </motion.div>
-          <motion.div style={{ opacity: fade }} className="absolute inset-0 bg-gradient-to-t from-ink-950/50 via-transparent to-transparent" />
-          <div className="absolute left-6 top-6 md:left-8 md:top-8">
-            <div className="chip bg-white/80 text-ink-950 border-transparent">
-              <span className="h-1.5 w-1.5 rounded-full bg-ember-500 mr-2" />
-              Live project · I-35 Corridor, Waco TX
-            </div>
-          </div>
-        </motion.div>
-      </div>
-
-      <div className="hairline-t">
-        <div className="container-x grid grid-cols-2 md:grid-cols-4 gap-8 py-10">
-          {stats.map((s, i) => (
-            <motion.div
-              key={s.v}
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <div className="serif text-4xl md:text-5xl tracking-tight text-ink-950">{s.k}</div>
-              <div className="text-[11px] uppercase tracking-[0.26em] text-ink-500 mt-2">{s.v}</div>
-            </motion.div>
-          ))}
         </div>
       </div>
     </section>

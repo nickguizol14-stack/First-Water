@@ -2,7 +2,7 @@ import { SectionHeading } from "@/components/section-heading";
 import { Reveal } from "@/components/reveal";
 import { ScrollImage } from "@/components/scroll-image";
 import { CtaBand } from "@/components/cta-band";
-import { equipment } from "@/lib/data";
+import { equipment, gallery } from "@/lib/data";
 
 export const metadata = { title: "Equipment & Crews" };
 
@@ -19,7 +19,8 @@ export default function EquipmentPage() {
       <section className="pt-40 md:pt-48 pb-12">
         <div className="container-x">
           <SectionHeading
-            eyebrow="— Fleet & Crew"
+            index="01"
+            eyebrow="Fleet & Crew"
             title="The iron, the tech, and the people behind the pour."
             subtitle="Over $180M in owned equipment, maintained in-house, run by long-tenured crews."
           />
@@ -38,9 +39,10 @@ export default function EquipmentPage() {
                   parallax={6}
                   reveal="clip-up"
                 />
-                <div className="mt-5">
-                  <div className="serif text-2xl md:text-[26px] text-ink-950">{e.name}</div>
-                  <div className="text-ink-600 text-sm mt-2 leading-relaxed">{e.spec}</div>
+                <div className="mt-5 border-t border-white/10 pt-5">
+                  <div className="mono text-[11px] uppercase tracking-[0.22em] text-hivis-500">— Unit 0{i + 1}</div>
+                  <div className="font-display font-extrabold uppercase text-xl md:text-2xl mt-3 text-white leading-tight">{e.name}</div>
+                  <div className="text-white/60 text-sm mt-3 leading-relaxed">{e.spec}</div>
                 </div>
               </div>
             </Reveal>
@@ -48,16 +50,16 @@ export default function EquipmentPage() {
         </div>
       </section>
 
-      <section className="section-pad bg-cream-100">
+      <section className="section-pad border-t border-white/10 bg-tar-900">
         <div className="container-x">
-          <SectionHeading eyebrow="— Paving Tech" title="The stack that keeps tolerances tight." />
-          <div className="mt-14 grid gap-px md:grid-cols-2 lg:grid-cols-4 bg-ink-200 border border-ink-200 rounded-2xl overflow-hidden">
+          <SectionHeading index="02" eyebrow="Paving Tech" title="The stack that keeps tolerances tight." />
+          <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-4 border-t border-l border-white/10">
             {techCallouts.map((t, i) => (
               <Reveal key={t.name} delay={i * 0.05}>
-                <div className="bg-cream-50 p-7 h-full">
-                  <div className="serif text-ember-500 text-xl">0{i + 1}</div>
-                  <div className="serif text-xl mt-4 text-ink-950">{t.name}</div>
-                  <p className="mt-3 text-sm text-ink-600 leading-relaxed">{t.copy}</p>
+                <div className="bg-tar-950 p-7 h-full border-r border-b border-white/10 -mr-px -mb-px">
+                  <div className="mono text-[11px] text-hivis-500 tabular-nums uppercase tracking-[0.24em]">0{i + 1}</div>
+                  <div className="font-display font-extrabold uppercase text-lg mt-5 text-white tracking-wide">{t.name}</div>
+                  <p className="mt-3 text-sm text-white/60 leading-relaxed">{t.copy}</p>
                 </div>
               </Reveal>
             ))}
@@ -65,17 +67,18 @@ export default function EquipmentPage() {
         </div>
       </section>
 
-      <section className="section-pad">
+      <section className="section-pad border-t border-white/10">
         <div className="container-x grid gap-10 lg:grid-cols-[1.2fr_1fr] items-center">
           <div>
             <SectionHeading
-              eyebrow="— The Crews"
+              index="03"
+              eyebrow="The Crews"
               title="Average crew tenure: 11 years."
               subtitle="We hire foremen and operators for careers, not jobs. That's why your project opens on time — and on spec."
             />
           </div>
           <ScrollImage
-            src="https://images.unsplash.com/photo-1556761175-4b46a572b786?q=80&w=1800&auto=format&fit=crop"
+            src={gallery.crew}
             alt="Paving crew"
             aspect="aspect-[5/6]"
             parallax={10}

@@ -25,15 +25,15 @@ export function ProjectGrid() {
 
   return (
     <>
-      <div className="flex flex-wrap gap-1.5 mb-12">
+      <div className="flex flex-wrap gap-0 mb-12 border border-white/10 w-fit">
         {filters.map((f) => (
           <button
             key={f.id}
             onClick={() => setActive(f.id)}
-            className={`rounded-full px-5 py-2 text-[11px] uppercase tracking-[0.24em] transition ${
+            className={`mono px-5 py-2.5 text-[11px] uppercase tracking-[0.24em] transition border-r border-white/10 last:border-r-0 ${
               active === f.id
-                ? "bg-ink-950 text-cream-50"
-                : "bg-transparent text-ink-500 hover:text-ink-950 border border-ink-200"
+                ? "bg-hivis-500 text-tar-950"
+                : "text-white/55 hover:text-white hover:bg-white/5"
             }`}
           >
             {f.label}
@@ -47,34 +47,46 @@ export function ProjectGrid() {
             <motion.div
               key={p.slug}
               layout
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -12 }}
-              transition={{ duration: 0.7, delay: i * 0.05, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.6, delay: i * 0.04, ease: [0.22, 1, 0.36, 1] }}
             >
               <Link href={`/projects/${p.slug}`} className="group block">
-                <ScrollImage
-                  src={p.hero}
-                  alt={p.name}
-                  aspect="aspect-[4/5]"
-                  rounded="rounded-2xl"
-                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                  parallax={6}
-                  overlay
-                />
-                <div className="mt-5 flex items-start justify-between gap-4">
-                  <div>
-                    <div className="text-[11px] uppercase tracking-[0.24em] text-ember-500">
-                      {p.sectorLabel} · {p.location}
-                    </div>
-                    <div className="serif text-2xl md:text-[26px] leading-tight mt-2 text-ink-950 text-balance">
-                      {p.name}
-                    </div>
-                    <div className="mt-3 text-[12px] text-ink-500">
-                      {p.tonnage} · {p.timeline}
+                <div className="relative">
+                  <ScrollImage
+                    src={p.hero}
+                    alt={p.name}
+                    aspect="aspect-[4/5]"
+                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                    parallax={5}
+                    overlay
+                  />
+                  <div className="absolute top-4 left-4">
+                    <div className="chip">
+                      <span className="h-1.5 w-1.5 bg-hivis-500 mr-2" />
+                      {p.sectorLabel}
                     </div>
                   </div>
-                  <div className="mt-1 h-10 w-10 shrink-0 rounded-full border border-ink-950/20 flex items-center justify-center transition group-hover:bg-ink-950 group-hover:text-cream-50">
+                  <div className="absolute top-4 right-4 mono text-[11px] text-white/70 tabular-nums">
+                    0{i + 1}
+                  </div>
+                </div>
+                <div className="mt-5 border-t border-white/10 pt-5 flex items-start justify-between gap-4">
+                  <div>
+                    <div className="mono text-[11px] uppercase tracking-[0.22em] text-white/45 mb-2">
+                      {p.location}
+                    </div>
+                    <div className="font-display font-extrabold uppercase text-xl md:text-2xl leading-tight text-white">
+                      {p.name}
+                    </div>
+                    <div className="mono text-[11px] text-white/50 mt-3 flex gap-3 uppercase tracking-[0.18em]">
+                      <span>{p.tonnage}</span>
+                      <span className="text-white/20">·</span>
+                      <span>{p.timeline}</span>
+                    </div>
+                  </div>
+                  <div className="mt-1 h-9 w-9 shrink-0 border border-white/20 flex items-center justify-center transition group-hover:bg-hivis-500 group-hover:border-hivis-500 group-hover:text-tar-950">
                     <ArrowUpRight className="h-4 w-4" />
                   </div>
                 </div>

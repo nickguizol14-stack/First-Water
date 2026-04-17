@@ -5,45 +5,55 @@ export default {
   theme: {
     extend: {
       colors: {
-        cream: {
-          50: "#fbfaf7",
-          100: "#f6f3ec",
-          200: "#eeeadf",
-          300: "#e2dccb",
+        // Industrial / asphalt tones
+        tar: {
+          950: "#07080a",
+          900: "#0d0f12",
+          800: "#14171c",
+          700: "#1c2027",
+          600: "#252a33",
+          500: "#363c47",
+          400: "#5a6170",
+          300: "#8a8f9a",
+          200: "#b7bac1",
+          100: "#dcdee2",
         },
-        ink: {
-          950: "#0b0c0e",
-          900: "#14161a",
-          800: "#1f2127",
-          700: "#2d3038",
-          600: "#4a4e58",
-          500: "#6b6f76",
-          400: "#9a9ea6",
-          300: "#c4c7cd",
-          200: "#e6e4dd",
+        // Hi-vis / safety amber accent
+        hivis: {
+          300: "#fde68a",
+          400: "#fcd34d",
+          500: "#f59e0b",
+          600: "#d97706",
+          700: "#b45309",
         },
-        ember: {
-          500: "#c2410c",
-          600: "#9a3412",
-          700: "#7c2d12",
+        // DOT / construction orange, used sparingly
+        dot: {
+          500: "#ea580c",
+          600: "#c2410c",
         },
       },
       fontFamily: {
-        display: ["var(--font-display)", "serif"],
+        display: ["var(--font-display)", "sans-serif"],
         sans: ["var(--font-sans)", "sans-serif"],
+        mono: ["var(--font-mono)", "ui-monospace", "monospace"],
       },
       animation: {
-        "fade-up": "fade-up 0.8s ease-out forwards",
-        "slow-pan": "slow-pan 26s ease-in-out infinite alternate",
+        "slow-pan": "slow-pan 28s ease-in-out infinite alternate",
+        "marquee": "marquee 45s linear infinite",
+        "blink": "blink 1.4s ease-in-out infinite",
       },
       keyframes: {
-        "fade-up": {
-          "0%": { opacity: "0", transform: "translateY(24px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
-        },
         "slow-pan": {
           "0%": { transform: "scale(1.08) translate(0,0)" },
           "100%": { transform: "scale(1.16) translate(-2%,-1%)" },
+        },
+        marquee: {
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+        blink: {
+          "0%,100%": { opacity: "1" },
+          "50%": { opacity: "0.25" },
         },
       },
     },

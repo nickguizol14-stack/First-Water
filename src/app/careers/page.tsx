@@ -2,7 +2,7 @@ import { SectionHeading } from "@/components/section-heading";
 import { Reveal } from "@/components/reveal";
 import { ScrollImage } from "@/components/scroll-image";
 import { CtaBand } from "@/components/cta-band";
-import { careersOpenings } from "@/lib/data";
+import { careersOpenings, gallery } from "@/lib/data";
 import { ArrowUpRight } from "lucide-react";
 
 export const metadata = { title: "Careers" };
@@ -22,7 +22,8 @@ export default function CareersPage() {
       <section className="pt-40 md:pt-48 pb-12">
         <div className="container-x">
           <SectionHeading
-            eyebrow="— Careers"
+            index="01"
+            eyebrow="Careers"
             title="Long careers on the road, not short ones on a job site."
             subtitle="Paver operators, foremen, CDL drivers, PMs, and QC techs — we hire crews for careers, not seasons. Average tenure: 11 years."
           />
@@ -32,7 +33,7 @@ export default function CareersPage() {
       <section className="pb-16">
         <div className="container-x">
           <ScrollImage
-            src="https://images.unsplash.com/photo-1541873676-a18131494184?q=80&w=2600&auto=format&fit=crop"
+            src={gallery.heroMain}
             alt="Crew at work"
             aspect="aspect-[21/9]"
             priority
@@ -41,25 +42,26 @@ export default function CareersPage() {
         </div>
       </section>
 
-      <section className="section-pad">
+      <section className="section-pad border-t border-white/10">
         <div className="container-x">
-          <SectionHeading eyebrow="— Open Roles" title="Now hiring across the Southwest." />
-          <div className="mt-14 border-t border-ink-200">
+          <SectionHeading index="02" eyebrow="Open Roles" title="Now hiring across the Southwest." />
+          <div className="mt-14 border-t border-white/10">
             {careersOpenings.map((o, i) => (
               <Reveal key={o.title + o.location} delay={i * 0.03}>
                 <a
                   href="mailto:careers@fwcis.com?subject=Application"
-                  className="group flex items-center justify-between gap-6 py-7 border-b border-ink-200 transition hover:bg-cream-100 px-3 -mx-3 rounded-lg"
+                  className="group flex items-center justify-between gap-6 py-7 border-b border-white/10 transition hover:bg-tar-900 px-3 -mx-3"
                 >
                   <div>
-                    <div className="serif text-2xl md:text-[28px] text-ink-950 leading-tight">
+                    <div className="mono text-[11px] uppercase tracking-[0.24em] text-hivis-500 tabular-nums">— 0{i + 1}</div>
+                    <div className="font-display font-extrabold uppercase text-xl md:text-2xl mt-2 text-white leading-tight tracking-wide">
                       {o.title}
                     </div>
-                    <div className="text-[11px] uppercase tracking-[0.26em] text-ink-500 mt-2">
+                    <div className="mono text-[11px] uppercase tracking-[0.26em] text-white/55 mt-2">
                       {o.location} · {o.type}
                     </div>
                   </div>
-                  <div className="h-11 w-11 shrink-0 rounded-full border border-ink-950/20 flex items-center justify-center group-hover:bg-ink-950 group-hover:text-cream-50 transition">
+                  <div className="h-11 w-11 shrink-0 border border-white/20 flex items-center justify-center group-hover:bg-hivis-500 group-hover:border-hivis-500 group-hover:text-tar-950 transition">
                     <ArrowUpRight className="h-4 w-4" />
                   </div>
                 </a>
@@ -69,15 +71,15 @@ export default function CareersPage() {
         </div>
       </section>
 
-      <section className="section-pad bg-cream-100">
+      <section className="section-pad border-t border-white/10 bg-tar-900">
         <div className="container-x">
-          <SectionHeading eyebrow="— Benefits" title="Why our crews stay." />
-          <div className="mt-14 grid gap-px md:grid-cols-2 lg:grid-cols-3 bg-ink-200 border border-ink-200 rounded-2xl overflow-hidden">
+          <SectionHeading index="03" eyebrow="Benefits" title="Why our crews stay." />
+          <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-3 border-t border-l border-white/10">
             {perks.map((p, i) => (
               <Reveal key={p} delay={i * 0.04}>
-                <div className="bg-cream-50 p-6">
-                  <div className="h-1.5 w-1.5 rounded-full bg-ember-500 mb-3" />
-                  <div className="text-ink-950">{p}</div>
+                <div className="bg-tar-950 p-7 border-r border-b border-white/10 -mr-px -mb-px h-full">
+                  <div className="mono text-[11px] text-hivis-500 tabular-nums uppercase tracking-[0.24em]">0{i + 1}</div>
+                  <div className="text-white mt-4 leading-relaxed">{p}</div>
                 </div>
               </Reveal>
             ))}

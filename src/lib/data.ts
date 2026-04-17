@@ -16,8 +16,12 @@ export type Project = {
   before: string;
   after: string;
   drone: string;
-  coords: [number, number]; // [lat, lng]
+  coords: [number, number];
 };
+
+// Reliable image source with stable seeded URLs. Every image guaranteed to load.
+const img = (seed: string, w = 1800, h = 1200) =>
+  `https://picsum.photos/seed/fw-${seed}/${w}/${h}`;
 
 export const projects: Project[] = [
   {
@@ -38,10 +42,10 @@ export const projects: Project[] = [
       author: "R. Delgado",
       role: "Resident Engineer, TxDOT",
     },
-    hero: "https://images.unsplash.com/photo-1617886322207-6f504e7472e4?q=80&w=2400&auto=format&fit=crop",
-    before: "https://images.unsplash.com/photo-1502866815647-4ba33d27b495?q=80&w=1800&auto=format&fit=crop",
-    after: "https://images.unsplash.com/photo-1473042904451-00171c69419d?q=80&w=1800&auto=format&fit=crop",
-    drone: "https://images.unsplash.com/photo-1566054757965-8c4085344c96?q=80&w=2400&auto=format&fit=crop",
+    hero: img("i35-hero", 2400, 1350),
+    before: img("i35-before"),
+    after: img("i35-after"),
+    drone: img("i35-drone", 2400, 1350),
     coords: [31.5493, -97.1467],
   },
   {
@@ -62,10 +66,10 @@ export const projects: Project[] = [
       author: "M. Okafor",
       role: "Airside Operations, DFW",
     },
-    hero: "https://images.unsplash.com/photo-1464037866556-6812c9d1c72e?q=80&w=2400&auto=format&fit=crop",
-    before: "https://images.unsplash.com/photo-1474302770737-173ee21bab63?q=80&w=1800&auto=format&fit=crop",
-    after: "https://images.unsplash.com/photo-1541873676-a18131494184?q=80&w=1800&auto=format&fit=crop",
-    drone: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=2400&auto=format&fit=crop",
+    hero: img("dfw-hero", 2400, 1350),
+    before: img("dfw-before"),
+    after: img("dfw-after"),
+    drone: img("dfw-drone", 2400, 1350),
     coords: [32.8998, -97.0403],
   },
   {
@@ -86,10 +90,10 @@ export const projects: Project[] = [
       author: "K. Lowe",
       role: "Construction Manager, Costco",
     },
-    hero: "https://images.unsplash.com/photo-1558449028-b53a39d100fc?q=80&w=2400&auto=format&fit=crop",
-    before: "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?q=80&w=1800&auto=format&fit=crop",
-    after: "https://images.unsplash.com/photo-1470224114660-3f6686c562eb?q=80&w=1800&auto=format&fit=crop",
-    drone: "https://images.unsplash.com/photo-1488404890693-cc066391d1e5?q=80&w=2400&auto=format&fit=crop",
+    hero: img("costco-hero", 2400, 1350),
+    before: img("costco-before"),
+    after: img("costco-after"),
+    drone: img("costco-drone", 2400, 1350),
     coords: [35.4676, -97.5164],
   },
   {
@@ -110,10 +114,10 @@ export const projects: Project[] = [
       author: "T. Ruiz",
       role: "PW Director, City of Frisco",
     },
-    hero: "https://images.unsplash.com/photo-1545454675-3531b543be5d?q=80&w=2400&auto=format&fit=crop",
-    before: "https://images.unsplash.com/photo-1597915316098-cc25e5e3b4bf?q=80&w=1800&auto=format&fit=crop",
-    after: "https://images.unsplash.com/photo-1502920917128-1aa500764cbd?q=80&w=1800&auto=format&fit=crop",
-    drone: "https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?q=80&w=2400&auto=format&fit=crop",
+    hero: img("frisco-hero", 2400, 1350),
+    before: img("frisco-before"),
+    after: img("frisco-after"),
+    drone: img("frisco-drone", 2400, 1350),
     coords: [33.1507, -96.8236],
   },
   {
@@ -134,10 +138,10 @@ export const projects: Project[] = [
       author: "J. Albright",
       role: "Director of Operations, Port Houston",
     },
-    hero: "https://images.unsplash.com/photo-1494412519320-aa613dfb7738?q=80&w=2400&auto=format&fit=crop",
-    before: "https://images.unsplash.com/photo-1518631012118-50dee25a6df0?q=80&w=1800&auto=format&fit=crop",
-    after: "https://images.unsplash.com/photo-1507149833265-60c372daea22?q=80&w=1800&auto=format&fit=crop",
-    drone: "https://images.unsplash.com/photo-1554672408-730436b60dde?q=80&w=2400&auto=format&fit=crop",
+    hero: img("port-hero", 2400, 1350),
+    before: img("port-before"),
+    after: img("port-after"),
+    drone: img("port-drone", 2400, 1350),
     coords: [29.7258, -95.2486],
   },
   {
@@ -158,10 +162,10 @@ export const projects: Project[] = [
       author: "A. Chen",
       role: "Regional Facilities, The Home Depot",
     },
-    hero: "https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?q=80&w=2400&auto=format&fit=crop",
-    before: "https://images.unsplash.com/photo-1485518882345-15568b007407?q=80&w=1800&auto=format&fit=crop",
-    after: "https://images.unsplash.com/photo-1449157291145-7efd050a4d0e?q=80&w=1800&auto=format&fit=crop",
-    drone: "https://images.unsplash.com/photo-1524492514790-8ee0094320aa?q=80&w=2400&auto=format&fit=crop",
+    hero: img("homedepot-hero", 2400, 1350),
+    before: img("homedepot-before"),
+    after: img("homedepot-after"),
+    drone: img("homedepot-drone", 2400, 1350),
     coords: [33.4484, -112.074],
   },
 ];
@@ -171,133 +175,63 @@ export const services = [
     id: "new-construction",
     name: "New Construction Paving",
     blurb: "Greenfield highways, runways, and heavy-civil lots paved to DOT and FAA tolerances.",
-    image: "https://images.unsplash.com/photo-1617886322207-6f504e7472e4?q=80&w=1600&auto=format&fit=crop",
+    image: img("svc-newcon", 1600, 1000),
   },
   {
     id: "mill-overlay",
     name: "Mill & Overlay",
     blurb: "Precision milling paired with single-pass paving to renew pavement life with minimum downtime.",
-    image: "https://images.unsplash.com/photo-1502866815647-4ba33d27b495?q=80&w=1600&auto=format&fit=crop",
+    image: img("svc-mill", 1600, 1000),
   },
   {
     id: "fdr",
     name: "Full-Depth Reclamation",
     blurb: "Structural rehab that recycles existing pavement in place — faster, greener, cheaper.",
-    image: "https://images.unsplash.com/photo-1488404890693-cc066391d1e5?q=80&w=1600&auto=format&fit=crop",
+    image: img("svc-fdr", 1600, 1000),
   },
   {
     id: "micro-surfacing",
     name: "Micro-Surfacing",
     blurb: "Polymer-modified surface treatment that seals and re-textures pavement in a single pass.",
-    image: "https://images.unsplash.com/photo-1507149833265-60c372daea22?q=80&w=1600&auto=format&fit=crop",
+    image: img("svc-micro", 1600, 1000),
   },
   {
     id: "maintenance",
-    name: "Seal Coat, Crack Seal, & Striping",
+    name: "Seal Coat, Crack Seal & Striping",
     blurb: "Preventive maintenance programs that extend pavement life by years for pennies on the dollar.",
-    image: "https://images.unsplash.com/photo-1545454675-3531b543be5d?q=80&w=1600&auto=format&fit=crop",
+    image: img("svc-maint", 1600, 1000),
   },
   {
     id: "ada",
     name: "ADA Upgrades & Patching",
     blurb: "Ramp, detectable warning, and pavement patching work in full compliance with the 2010 Standards.",
-    image: "https://images.unsplash.com/photo-1470224114660-3f6686c562eb?q=80&w=1600&auto=format&fit=crop",
+    image: img("svc-ada", 1600, 1000),
   },
 ];
 
 export const sectors = [
-  {
-    slug: "highways",
-    name: "Federal & State Highways",
-    summary: "Tier-1 prequalified for DOT mainline and corridor work across the Southwest.",
-    image: "https://images.unsplash.com/photo-1473042904451-00171c69419d?q=80&w=2000&auto=format&fit=crop",
-  },
-  {
-    slug: "airports",
-    name: "Airports & Runways",
-    summary: "FAA P-401 compliant paving on nighttime closure windows with zero tolerance for FOD.",
-    image: "https://images.unsplash.com/photo-1464037866556-6812c9d1c72e?q=80&w=2000&auto=format&fit=crop",
-  },
-  {
-    slug: "ports-seaports",
-    name: "Seaports & Intermodal",
-    summary: "Heavy-duty surfacing engineered for container handlers, straddle carriers, and RTGs.",
-    image: "https://images.unsplash.com/photo-1494412519320-aa613dfb7738?q=80&w=2000&auto=format&fit=crop",
-  },
-  {
-    slug: "municipal",
-    name: "Municipal Streets",
-    summary: "Overlay programs, neighborhood reconstruction, and ADA compliance for cities and counties.",
-    image: "https://images.unsplash.com/photo-1545454675-3531b543be5d?q=80&w=2000&auto=format&fit=crop",
-  },
-  {
-    slug: "commercial",
-    name: "Commercial & Retail",
-    summary: "Distribution yards, big-box lots, HOAs, and campuses — paved on your operating schedule.",
-    image: "https://images.unsplash.com/photo-1558449028-b53a39d100fc?q=80&w=2000&auto=format&fit=crop",
-  },
-  {
-    slug: "industrial",
-    name: "Industrial Facilities",
-    summary: "Refineries, warehouses, and manufacturing plants with heavy wheel loading demands.",
-    image: "https://images.unsplash.com/photo-1518631012118-50dee25a6df0?q=80&w=2000&auto=format&fit=crop",
-  },
+  { slug: "highways", name: "Federal & State Highways", summary: "Tier-1 prequalified for DOT mainline and corridor work across the Southwest.", image: img("sec-hwy", 2000, 1400) },
+  { slug: "airports", name: "Airports & Runways", summary: "FAA P-401 compliant paving on nighttime closure windows with zero tolerance for FOD.", image: img("sec-air", 2000, 1400) },
+  { slug: "ports-seaports", name: "Seaports & Intermodal", summary: "Heavy-duty surfacing engineered for container handlers, straddle carriers, and RTGs.", image: img("sec-port", 2000, 1400) },
+  { slug: "municipal", name: "Municipal Streets", summary: "Overlay programs, neighborhood reconstruction, and ADA compliance for cities and counties.", image: img("sec-muni", 2000, 1400) },
+  { slug: "commercial", name: "Commercial & Retail", summary: "Distribution yards, big-box lots, HOAs, and campuses — paved on your operating schedule.", image: img("sec-com", 2000, 1400) },
+  { slug: "industrial", name: "Industrial Facilities", summary: "Refineries, warehouses, and manufacturing plants with heavy wheel loading demands.", image: img("sec-ind", 2000, 1400) },
 ];
 
 export const equipment = [
-  {
-    name: "Vögele SUPER 2100-3i Pavers",
-    spec: "35-ft variable-width paving, AutoSet Plus, PaveDock Assist",
-    image: "https://images.unsplash.com/photo-1617886322207-6f504e7472e4?q=80&w=1600&auto=format&fit=crop",
-  },
-  {
-    name: "Hamm HD+ Tandem Rollers",
-    spec: "Intelligent compaction with Oscillation and HCQ-GPS mapping",
-    image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=1600&auto=format&fit=crop",
-  },
-  {
-    name: "Wirtgen W 210 Fi Cold Mills",
-    spec: "3D level control, Mill Assist, and closed-loop emissions systems",
-    image: "https://images.unsplash.com/photo-1556761175-4b46a572b786?q=80&w=1600&auto=format&fit=crop",
-  },
-  {
-    name: "Roadtec SB-3000 Shuttle Buggies",
-    spec: "Anti-segregation material transfer for airport and DOT-smoothness pay items",
-    image: "https://images.unsplash.com/photo-1587293852726-70cdb56c2866?q=80&w=1600&auto=format&fit=crop",
-  },
+  { name: "Vögele SUPER 2100-3i Pavers", spec: "35-ft variable-width paving · AutoSet Plus · PaveDock Assist", image: img("eq-paver", 1600, 1000) },
+  { name: "Hamm HD+ Tandem Rollers", spec: "Intelligent compaction · Oscillation · HCQ-GPS mapping", image: img("eq-roller", 1600, 1000) },
+  { name: "Wirtgen W 210 Fi Cold Mills", spec: "3D level control · Mill Assist · closed-loop emissions", image: img("eq-mill", 1600, 1000) },
+  { name: "Roadtec SB-3000 Shuttle Buggies", spec: "Anti-segregation material transfer for smoothness pay-item work", image: img("eq-sb", 1600, 1000) },
 ];
 
 export const processSteps = [
-  {
-    step: "01",
-    title: "Site Walk & Estimate",
-    copy: "A superintendent walks the site, pulls cores if needed, and delivers a scoped estimate within a week.",
-  },
-  {
-    step: "02",
-    title: "Design & Mix Selection",
-    copy: "Our QC lab designs the mix — PG grade, aggregate gradation, polymer modification — for your traffic and climate.",
-  },
-  {
-    step: "03",
-    title: "Schedule & Traffic Plan",
-    copy: "We build the sequencing, phasing, traffic control, and public notification plan before a blade touches ground.",
-  },
-  {
-    step: "04",
-    title: "Prep & Demolition",
-    copy: "Milling, base repair, utility adjustments, and sub-grade work — the quiet steps that decide pavement life.",
-  },
-  {
-    step: "05",
-    title: "Paving & Compaction",
-    copy: "3D-controlled paving with intelligent compaction maps. Every pass logged, every lot acceptance-tested.",
-  },
-  {
-    step: "06",
-    title: "Striping & Hand-Off",
-    copy: "Thermoplastic striping, ADA detectables, punch-list, and a warranty walk before we hand you the keys.",
-  },
+  { step: "01", title: "Site Walk & Estimate", copy: "A superintendent walks the site, pulls cores if needed, and delivers a scoped estimate within a week." },
+  { step: "02", title: "Design & Mix Selection", copy: "Our QC lab designs the mix — PG grade, aggregate gradation, polymer modification — for your traffic and climate." },
+  { step: "03", title: "Schedule & Traffic Plan", copy: "We build the sequencing, phasing, traffic control, and public notification plan before a blade touches ground." },
+  { step: "04", title: "Prep & Demolition", copy: "Milling, base repair, utility adjustments, and sub-grade work — the quiet steps that decide pavement life." },
+  { step: "05", title: "Paving & Compaction", copy: "3D-controlled paving with intelligent compaction maps. Every pass logged, every lot acceptance-tested." },
+  { step: "06", title: "Striping & Hand-Off", copy: "Thermoplastic striping, ADA detectables, punch-list, and a warranty walk before we hand you the keys." },
 ];
 
 export const serviceAreas = [
@@ -312,24 +246,9 @@ export const serviceAreas = [
 ];
 
 export const testimonials = [
-  {
-    quote: "First Water is the rare paver who hits both the schedule and the spec. Not many can.",
-    author: "R. Delgado",
-    role: "Resident Engineer, TxDOT",
-    logo: "TxDOT",
-  },
-  {
-    quote: "They paved 52 acres of a live distribution yard without disrupting a single outbound load.",
-    author: "K. Lowe",
-    role: "Construction Manager, Costco",
-    logo: "Costco",
-  },
-  {
-    quote: "Smoothness bonuses across every FAA lot — that is not normal, that is craft.",
-    author: "M. Okafor",
-    role: "Airside Operations, DFW Airport",
-    logo: "DFW",
-  },
+  { quote: "First Water is the rare paver who hits both the schedule and the spec. Not many can.", author: "R. Delgado", role: "Resident Engineer, TxDOT" },
+  { quote: "They paved 52 acres of a live distribution yard without disrupting a single outbound load.", author: "K. Lowe", role: "Construction Manager, Costco" },
+  { quote: "Smoothness bonuses across every FAA lot — that is not normal, that is craft.", author: "M. Okafor", role: "Airside Operations, DFW Airport" },
 ];
 
 export const certifications = [
@@ -351,31 +270,18 @@ export const careersOpenings = [
 ];
 
 export const resources = [
-  {
-    slug: "how-long-does-asphalt-last",
-    title: "How Long Does Asphalt Actually Last?",
-    excerpt:
-      "A truthful look at pavement lifespan — what we see on real DOT lots vs. what you read in a spec sheet.",
-    date: "2026-03-18",
-    readMin: 6,
-    image: "https://images.unsplash.com/photo-1473042904451-00171c69419d?q=80&w=1600&auto=format&fit=crop",
-  },
-  {
-    slug: "seal-coat-vs-repave",
-    title: "Seal Coat vs. Repave: A Decision Framework",
-    excerpt:
-      "Four signals that tell you whether a seal coat buys you another 5 years — or is money thrown at a dead surface.",
-    date: "2026-02-04",
-    readMin: 5,
-    image: "https://images.unsplash.com/photo-1502866815647-4ba33d27b495?q=80&w=1600&auto=format&fit=crop",
-  },
-  {
-    slug: "maintenance-playbook",
-    title: "The Commercial Property Maintenance Playbook",
-    excerpt:
-      "A year-by-year calendar for keeping a 10-acre commercial lot out of the full-reconstruction category.",
-    date: "2026-01-12",
-    readMin: 8,
-    image: "https://images.unsplash.com/photo-1488404890693-cc066391d1e5?q=80&w=1600&auto=format&fit=crop",
-  },
+  { slug: "how-long-does-asphalt-last", title: "How Long Does Asphalt Actually Last?", excerpt: "A truthful look at pavement lifespan — what we see on real DOT lots vs. what you read in a spec sheet.", date: "2026-03-18", readMin: 6, image: img("res-life", 1600, 1000) },
+  { slug: "seal-coat-vs-repave", title: "Seal Coat vs. Repave: A Decision Framework", excerpt: "Four signals that tell you whether a seal coat buys you another 5 years — or is money thrown at a dead surface.", date: "2026-02-04", readMin: 5, image: img("res-seal", 1600, 1000) },
+  { slug: "maintenance-playbook", title: "The Commercial Property Maintenance Playbook", excerpt: "A year-by-year calendar for keeping a 10-acre commercial lot out of the full-reconstruction category.", date: "2026-01-12", readMin: 8, image: img("res-maint", 1600, 1000) },
 ];
+
+// Editorial/gallery image set used across the site
+export const gallery = {
+  heroMain: img("hero-main", 2800, 1500),
+  craft: img("craft-roller", 2000, 1200),
+  rail1: img("rail1", 1400, 1800),
+  rail2: img("rail2", 1800, 1200),
+  rail3: img("rail3", 1800, 1200),
+  crew: img("crew", 1600, 2000),
+  community: img("community", 1800, 1300),
+};

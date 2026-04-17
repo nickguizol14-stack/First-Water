@@ -10,11 +10,11 @@ type Props = {
   priority?: boolean;
   sizes?: string;
   className?: string;
-  aspect?: string; // tailwind aspect class e.g. "aspect-[16/10]"
-  rounded?: string; // tailwind rounded class
-  parallax?: number; // % of scroll movement; 0 disables
+  aspect?: string;
+  parallax?: number;
   reveal?: "clip-up" | "clip-down" | "fade" | "scale";
-  overlay?: boolean; // subtle gradient overlay
+  overlay?: boolean;
+  industrial?: boolean;
 };
 
 export function ScrollImage({
@@ -24,10 +24,10 @@ export function ScrollImage({
   sizes = "100vw",
   className = "",
   aspect = "aspect-[16/10]",
-  rounded = "rounded-2xl",
   parallax = 8,
   reveal = "clip-up",
   overlay = false,
+  industrial = true,
 }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const prefersReduced = useReducedMotion();
@@ -40,7 +40,7 @@ export function ScrollImage({
     [0, 1],
     prefersReduced || parallax === 0 ? ["0%", "0%"] : [`-${parallax}%`, `${parallax}%`]
   );
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1.08, 1.02, 1.08]);
+  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1.1, 1.04, 1.1]);
 
   const clipInitial =
     reveal === "clip-down"
@@ -65,8 +65,8 @@ export function ScrollImage({
       initial={initial as any}
       whileInView={{ clipPath: "inset(0% 0% 0% 0%)", opacity: 1, scale: 1 }}
       viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-      className={`relative overflow-hidden ${aspect} ${rounded} ${className}`}
+      transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
+      className={`relative overflow-hidden ${aspect} ${className}`}
     >
       <motion.div
         style={{ y: prefersReduced ? undefined : y, scale }}
@@ -78,11 +78,11 @@ export function ScrollImage({
           fill
           priority={priority}
           sizes={sizes}
-          className="object-cover"
+          className={`object-cover ${industrial ? "img-industrial" : ""}`}
         />
       </motion.div>
       {overlay && (
-        <div className="absolute inset-0 bg-gradient-to-t from-ink-950/55 via-ink-950/10 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-tar-950/85 via-tar-950/20 to-transparent" />
       )}
     </motion.div>
   );

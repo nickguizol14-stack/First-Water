@@ -5,34 +5,33 @@ export function SectionHeading({
   title,
   subtitle,
   align = "left",
-  tone = "light",
+  index,
 }: {
   eyebrow?: string;
   title: string;
   subtitle?: string;
   align?: "left" | "center";
-  tone?: "light" | "dark";
+  index?: string;
 }) {
   const alignCls = align === "center" ? "text-center mx-auto" : "";
-  const titleColor = tone === "dark" ? "text-cream-50" : "text-ink-950";
-  const subColor = tone === "dark" ? "text-cream-50/70" : "text-ink-600";
   return (
-    <div className={`max-w-3xl ${alignCls}`}>
-      {eyebrow && (
-        <Reveal>
-          <div className="eyebrow mb-5">{eyebrow}</div>
-        </Reveal>
-      )}
+    <div className={`max-w-4xl ${alignCls}`}>
+      <div className={`flex items-center gap-4 mb-6 ${align === "center" ? "justify-center" : ""}`}>
+        {index && <span className="mono text-[11px] text-hivis-500 tabular-nums">{index}</span>}
+        <span className="h-px w-10 bg-hivis-500" />
+        {eyebrow && <Reveal><span className="eyebrow">{eyebrow}</span></Reveal>}
+      </div>
       <Reveal delay={0.05}>
         <h2
-          className={`serif font-medium tracking-[-0.02em] text-[clamp(2.2rem,5vw,4.8rem)] leading-[0.98] text-balance ${titleColor}`}
+          className="font-display font-black uppercase leading-[0.9] tracking-[-0.01em] text-white text-balance"
+          style={{ fontSize: "clamp(2rem, 5.4vw, 4.8rem)" }}
         >
           {title}
         </h2>
       </Reveal>
       {subtitle && (
         <Reveal delay={0.1}>
-          <p className={`mt-6 text-lg md:text-xl leading-relaxed text-pretty ${subColor}`}>
+          <p className="mt-6 text-base md:text-lg text-white/65 leading-relaxed text-pretty max-w-2xl">
             {subtitle}
           </p>
         </Reveal>

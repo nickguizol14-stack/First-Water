@@ -10,7 +10,8 @@ export default function SectorsPage() {
       <section className="pt-40 md:pt-48 pb-12">
         <div className="container-x">
           <SectionHeading
-            eyebrow="— Sectors"
+            index="01"
+            eyebrow="Sectors"
             title="Every heavy-civil vertical."
             subtitle="The mix, the crew, the schedule, the paperwork — tuned for your sector before we mobilize."
           />

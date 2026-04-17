@@ -12,7 +12,8 @@ export default function ProjectsPage() {
       <section className="pt-40 md:pt-48 pb-12">
         <div className="container-x">
           <SectionHeading
-            eyebrow="— Our Work"
+            index="01"
+            eyebrow="Our Work"
             title="Projects, filterable by sector and service."
             subtitle="Tap any card for the drone flyover, before/after scrubber, and the crew behind the job."
           />
@@ -25,10 +26,11 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      <section className="section-pad bg-cream-100">
+      <section className="section-pad border-t border-white/10 bg-tar-900">
         <div className="container-x">
           <SectionHeading
-            eyebrow="— Footprint"
+            index="02"
+            eyebrow="Footprint"
             title="Where we've laid asphalt."
             subtitle="Hover a pin to see the project. Dense in the Texas triangle, radiating out to the full Southwest."
           />

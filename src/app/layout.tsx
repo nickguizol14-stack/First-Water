@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Fraunces } from "next/font/google";
+import { Inter, Archivo, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -10,11 +10,18 @@ const sans = Inter({
   display: "swap",
 });
 
-const display = Fraunces({
+const display = Archivo({
   subsets: ["latin"],
   variable: "--font-display",
   display: "swap",
-  axes: ["opsz"],
+  weight: ["500", "600", "700", "800", "900"],
+});
+
+const mono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap",
+  weight: ["400", "500", "600"],
 });
 
 export const metadata: Metadata = {
@@ -23,7 +30,7 @@ export const metadata: Metadata = {
     template: "%s · First Water",
   },
   description:
-    "Heavy-civil asphalt paving for highways, airports, ports, and commercial properties. Miles paved, deadlines met, surfaces that last.",
+    "Heavy-civil asphalt paving for highways, airports, ports, and commercial properties. Miles paved, deadlines met, surfaces built to spec.",
   metadataBase: new URL("https://firstwater.vercel.app"),
 };
 
@@ -33,8 +40,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${sans.variable} ${display.variable}`}>
-      <body className="bg-cream-50 text-ink-950 overflow-x-hidden">
+    <html lang="en" className={`${sans.variable} ${display.variable} ${mono.variable}`}>
+      <body className="bg-tar-950 text-white overflow-x-hidden">
         <SiteHeader />
         <main>{children}</main>
         <SiteFooter />

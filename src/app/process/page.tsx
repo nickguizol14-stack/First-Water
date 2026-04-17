@@ -4,13 +4,14 @@ import { ScrollImage } from "@/components/scroll-image";
 import { CtaBand } from "@/components/cta-band";
 import { processSteps } from "@/lib/data";
 
+const img = (seed: string) => `https://picsum.photos/seed/fw-${seed}/2000/1300`;
 const images = [
-  "https://images.unsplash.com/photo-1617886322207-6f504e7472e4?q=80&w=2000&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1502866815647-4ba33d27b495?q=80&w=2000&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1488404890693-cc066391d1e5?q=80&w=2000&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?q=80&w=2000&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1473042904451-00171c69419d?q=80&w=2000&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1545454675-3531b543be5d?q=80&w=2000&auto=format&fit=crop",
+  img("process-01"),
+  img("process-02"),
+  img("process-03"),
+  img("process-04"),
+  img("process-05"),
+  img("process-06"),
 ];
 
 export const metadata = { title: "Process" };
@@ -21,7 +22,8 @@ export default function ProcessPage() {
       <section className="pt-40 md:pt-48 pb-12">
         <div className="container-x">
           <SectionHeading
-            eyebrow="— The Process"
+            index="01"
+            eyebrow="The Process"
             title="From first call to final stripe — exactly what happens."
             subtitle="Especially useful if you've never managed a commercial paving job. Nothing hidden."
           />
@@ -33,19 +35,25 @@ export default function ProcessPage() {
           {processSteps.map((s, i) => (
             <div
               key={s.step}
-              className={`grid gap-12 lg:grid-cols-[1fr_1.4fr] items-center py-20 border-t border-ink-200 ${
+              className={`grid gap-12 lg:grid-cols-[1fr_1.4fr] items-center py-20 border-t border-white/10 ${
                 i % 2 === 1 ? "lg:[&>*:first-child]:order-2" : ""
               }`}
             >
               <Reveal>
                 <div>
-                  <div className="serif text-[12vw] md:text-[9vw] lg:text-[8rem] text-ember-500 leading-none tracking-tight">
-                    {s.step}
+                  <div className="flex items-baseline gap-4">
+                    <span className="mono text-[11px] uppercase tracking-[0.24em] text-hivis-500">Step</span>
+                    <span
+                      className="font-display font-black text-white leading-none tabular-nums tracking-tight"
+                      style={{ fontSize: "clamp(5rem, 9vw, 8rem)" }}
+                    >
+                      {s.step}
+                    </span>
                   </div>
-                  <h3 className="serif text-3xl md:text-4xl mt-6 text-ink-950 text-balance">
+                  <h3 className="font-display font-extrabold uppercase text-2xl md:text-3xl mt-6 text-white tracking-wide text-balance">
                     {s.title}
                   </h3>
-                  <p className="mt-5 text-lg text-ink-600 max-w-xl leading-relaxed">{s.copy}</p>
+                  <p className="mt-5 text-lg text-white/60 max-w-xl leading-relaxed">{s.copy}</p>
                 </div>
               </Reveal>
               <ScrollImage

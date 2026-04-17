@@ -19,38 +19,41 @@ export default function SafetyPage() {
       <section className="pt-40 md:pt-48 pb-16">
         <div className="container-x">
           <SectionHeading
-            eyebrow="— Safety · Quality · Compliance"
+            index="01"
+            eyebrow="Safety · Quality · Compliance"
             title="Credentials that let us work the biggest lots in the country."
           />
         </div>
       </section>
 
       <section className="pb-24">
-        <div className="container-x grid gap-px md:grid-cols-2 lg:grid-cols-4 bg-ink-200 border border-ink-200 rounded-2xl overflow-hidden">
+        <div className="container-x grid md:grid-cols-2 lg:grid-cols-4 border-t border-l border-white/10">
           {pillars.map((p, i) => (
             <Reveal key={p.title} delay={i * 0.05}>
-              <div className="bg-cream-50 p-8 h-full">
-                <p.icon className="h-7 w-7 text-ember-500" />
-                <div className="mt-6 serif text-2xl text-ink-950">{p.title}</div>
-                <p className="mt-3 text-[15px] text-ink-600 leading-relaxed">{p.copy}</p>
+              <div className="bg-tar-900 p-8 h-full border-r border-b border-white/10 -mr-px -mb-px">
+                <div className="h-11 w-11 bg-hivis-500 text-tar-950 flex items-center justify-center">
+                  <p.icon className="h-5 w-5" />
+                </div>
+                <div className="mt-6 font-display font-extrabold uppercase text-lg md:text-xl text-white tracking-wide">{p.title}</div>
+                <p className="mt-3 text-[15px] text-white/60 leading-relaxed">{p.copy}</p>
               </div>
             </Reveal>
           ))}
         </div>
       </section>
 
-      <section className="section-pad bg-cream-100">
+      <section className="section-pad border-t border-white/10 bg-tar-900">
         <div className="container-x">
-          <SectionHeading eyebrow="— Certifications" title="Credentials on file." />
+          <SectionHeading index="02" eyebrow="Certifications" title="Credentials on file." />
           <Reveal>
             <ul className="mt-14 grid gap-3 md:grid-cols-2">
               {certifications.map((c) => (
                 <li
                   key={c}
-                  className="flex items-start gap-3 rounded-xl border border-ink-200 bg-cream-50 p-5"
+                  className="flex items-start gap-3 border border-white/10 bg-tar-950 p-5"
                 >
-                  <BadgeCheck className="h-5 w-5 text-ember-500 shrink-0 mt-0.5" />
-                  <span className="text-ink-950">{c}</span>
+                  <BadgeCheck className="h-5 w-5 text-hivis-500 shrink-0 mt-0.5" />
+                  <span className="text-white text-sm">{c}</span>
                 </li>
               ))}
             </ul>

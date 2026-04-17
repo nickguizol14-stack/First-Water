@@ -5,7 +5,7 @@ import { SectionHeading } from "@/components/section-heading";
 import { CtaBand } from "@/components/cta-band";
 import { Reveal } from "@/components/reveal";
 import { ScrollImage } from "@/components/scroll-image";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, ArrowLeft } from "lucide-react";
 
 const sectorMatch: Record<string, string> = {
   highways: "highway",
@@ -47,25 +47,33 @@ export default async function SectorPage({
         <div className="container-x">
           <Link
             href="/sectors"
-            className="text-xs uppercase tracking-[0.24em] text-ink-500 hover:text-ink-950"
+            className="inline-flex items-center gap-2 mono text-[11px] uppercase tracking-[0.24em] text-white/55 hover:text-hivis-500 transition"
           >
-            ← All sectors
+            <ArrowLeft className="h-3.5 w-3.5" /> All sectors
           </Link>
           <Reveal>
-            <div className="eyebrow mt-10 mb-5">— Sector Focus</div>
+            <div className="mt-10 mb-5 flex items-center gap-3">
+              <span className="h-px w-10 bg-hivis-500" />
+              <span className="eyebrow">Sector Focus</span>
+            </div>
           </Reveal>
           <Reveal delay={0.05}>
-            <h1 className="serif font-medium tracking-[-0.02em] text-[clamp(2.6rem,6vw,5.5rem)] leading-[0.96] text-balance max-w-5xl">
+            <h1
+              className="font-display font-black uppercase leading-[0.9] tracking-[-0.01em] text-white text-balance max-w-5xl"
+              style={{ fontSize: "clamp(2.6rem, 6vw, 5.5rem)" }}
+            >
               {sector.name}
             </h1>
           </Reveal>
           <Reveal delay={0.1}>
-            <p className="mt-8 max-w-2xl text-lg md:text-xl text-ink-600 leading-relaxed">
+            <p className="mt-8 max-w-2xl text-lg md:text-xl text-white/65 leading-relaxed">
               {sector.summary}
             </p>
           </Reveal>
-          <div className="mt-10 flex gap-3">
-            <Link href="/contact" className="btn-primary">Request a scoped proposal</Link>
+          <div className="mt-10 flex flex-wrap gap-3">
+            <Link href="/contact" className="btn-primary">
+              Request a scoped proposal <ArrowUpRight className="h-4 w-4" />
+            </Link>
             <Link href="/projects" className="btn-ghost">See sector projects</Link>
           </div>
         </div>
@@ -83,10 +91,11 @@ export default async function SectorPage({
         </div>
       </section>
 
-      <section className="section-pad bg-cream-100">
+      <section className="section-pad border-t border-white/10 bg-tar-900">
         <div className="container-x">
           <SectionHeading
-            eyebrow="— Selected Projects"
+            index="02"
+            eyebrow="Selected Projects"
             title={`Recent ${sector.name.toLowerCase()} work.`}
           />
           <div className="mt-16 grid gap-10 md:grid-cols-2">
@@ -101,16 +110,16 @@ export default async function SectorPage({
                       parallax={6}
                       overlay
                     />
-                    <div className="mt-5 flex items-start justify-between gap-4">
+                    <div className="mt-5 flex items-start justify-between gap-4 border-t border-white/10 pt-5">
                       <div>
-                        <div className="text-[11px] uppercase tracking-[0.24em] text-ember-500">
+                        <div className="mono text-[11px] uppercase tracking-[0.24em] text-hivis-500">
                           {p.location}
                         </div>
-                        <div className="serif text-2xl md:text-[26px] mt-2 text-ink-950 leading-tight">
+                        <div className="font-display font-extrabold uppercase text-xl md:text-2xl mt-2 text-white leading-tight">
                           {p.name}
                         </div>
                       </div>
-                      <div className="mt-1 h-10 w-10 shrink-0 rounded-full border border-ink-950/20 flex items-center justify-center transition group-hover:bg-ink-950 group-hover:text-cream-50">
+                      <div className="mt-1 h-10 w-10 shrink-0 border border-white/20 flex items-center justify-center transition group-hover:bg-hivis-500 group-hover:border-hivis-500 group-hover:text-tar-950">
                         <ArrowUpRight className="h-4 w-4" />
                       </div>
                     </div>
@@ -118,7 +127,7 @@ export default async function SectorPage({
                 </Reveal>
               ))
             ) : (
-              <p className="text-ink-500 text-lg">More projects from this sector coming soon.</p>
+              <p className="text-white/55 text-lg">More projects from this sector coming soon.</p>
             )}
           </div>
         </div>

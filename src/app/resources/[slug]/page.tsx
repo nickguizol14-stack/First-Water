@@ -41,18 +41,22 @@ export default async function ResourcePage({ params }: { params: Promise<{ slug:
         <div className="container-x">
           <Link
             href="/resources"
-            className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.24em] text-ink-500 hover:text-ink-950 transition"
+            className="inline-flex items-center gap-2 mono text-[11px] uppercase tracking-[0.24em] text-white/55 hover:text-hivis-500 transition"
           >
             <ArrowLeft className="h-3.5 w-3.5" /> All Resources
           </Link>
           <div className="max-w-3xl mt-10">
-            <div className="eyebrow mb-5">
-              — {new Date(r.date).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })} · {r.readMin} min read
+            <div className="eyebrow mb-5 flex items-center gap-3">
+              <span className="h-px w-10 bg-hivis-500" />
+              {new Date(r.date).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })} · {r.readMin} min read
             </div>
-            <h1 className="serif font-medium tracking-[-0.02em] text-[clamp(2.4rem,6vw,5rem)] leading-[0.96] text-balance">
+            <h1
+              className="font-display font-black uppercase leading-[0.9] tracking-[-0.01em] text-white text-balance"
+              style={{ fontSize: "clamp(2.4rem, 6vw, 5rem)" }}
+            >
               {r.title}
             </h1>
-            <p className="mt-8 text-lg md:text-xl text-ink-600 leading-relaxed">{r.excerpt}</p>
+            <p className="mt-8 text-lg md:text-xl text-white/65 leading-relaxed">{r.excerpt}</p>
           </div>
         </div>
       </section>
@@ -74,13 +78,13 @@ export default async function ResourcePage({ params }: { params: Promise<{ slug:
           {body.trim().split("\n\n").map((para, i) => {
             if (para.startsWith("## ")) {
               return (
-                <h2 key={i} className="serif text-3xl md:text-4xl mt-14 mb-4 text-ink-950">
+                <h2 key={i} className="font-display font-extrabold uppercase text-2xl md:text-3xl mt-14 mb-4 text-white tracking-wide">
                   {para.replace(/^## /, "")}
                 </h2>
               );
             }
             return (
-              <p key={i} className="mt-6 text-lg text-ink-700 leading-relaxed">
+              <p key={i} className="mt-6 text-lg text-white/70 leading-relaxed">
                 {para}
               </p>
             );

@@ -17,7 +17,8 @@ export function ContactForm() {
   };
 
   const input =
-    "w-full rounded-xl border border-ink-200 bg-white px-4 py-3.5 text-sm text-ink-950 placeholder:text-ink-400 focus:outline-none focus:border-ink-950 transition";
+    "w-full border border-white/15 bg-tar-900 px-4 py-3.5 text-sm text-white placeholder:text-white/35 focus:outline-none focus:border-hivis-500 transition";
+  const label = "mono text-[11px] uppercase tracking-[0.26em] text-white/55";
 
   return (
     <AnimatePresence mode="wait">
@@ -26,13 +27,13 @@ export function ContactForm() {
           key="ok"
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          className="rounded-2xl border border-ink-200 bg-white p-12 text-center"
+          className="border border-white/10 bg-tar-900 p-12 text-center"
         >
-          <div className="mx-auto h-12 w-12 rounded-full bg-ink-950 text-cream-50 flex items-center justify-center">
+          <div className="mx-auto h-12 w-12 bg-hivis-500 text-tar-950 flex items-center justify-center">
             <Check className="h-6 w-6" />
           </div>
-          <h3 className="serif text-3xl mt-6 text-ink-950">Quote request in.</h3>
-          <p className="mt-3 text-ink-600">
+          <h3 className="font-display font-black uppercase text-3xl mt-6 text-white tracking-tight">Quote request in.</h3>
+          <p className="mt-3 text-white/60">
             A superintendent will reach out within one business day to schedule your site walk.
           </p>
         </motion.div>
@@ -45,24 +46,24 @@ export function ContactForm() {
           className="space-y-5"
         >
           <div className="grid gap-5 md:grid-cols-2">
-            <label className="space-y-2">
-              <span className="text-[11px] uppercase tracking-[0.26em] text-ink-500">Name *</span>
+            <label className="space-y-2 block">
+              <span className={label}>Name *</span>
               <input required className={input} placeholder="Jane Doe" />
             </label>
-            <label className="space-y-2">
-              <span className="text-[11px] uppercase tracking-[0.26em] text-ink-500">Company</span>
+            <label className="space-y-2 block">
+              <span className={label}>Company</span>
               <input className={input} placeholder="Company, LLC" />
             </label>
-            <label className="space-y-2">
-              <span className="text-[11px] uppercase tracking-[0.26em] text-ink-500">Email *</span>
+            <label className="space-y-2 block">
+              <span className={label}>Email *</span>
               <input required type="email" className={input} placeholder="jane@company.com" />
             </label>
-            <label className="space-y-2">
-              <span className="text-[11px] uppercase tracking-[0.26em] text-ink-500">Phone</span>
+            <label className="space-y-2 block">
+              <span className={label}>Phone</span>
               <input type="tel" className={input} placeholder="(000) 000-0000" />
             </label>
-            <label className="space-y-2">
-              <span className="text-[11px] uppercase tracking-[0.26em] text-ink-500">Project type *</span>
+            <label className="space-y-2 block">
+              <span className={label}>Project type *</span>
               <select required className={input}>
                 <option value="">Select…</option>
                 <option>New construction</option>
@@ -72,22 +73,22 @@ export function ContactForm() {
                 <option>Other</option>
               </select>
             </label>
-            <label className="space-y-2">
-              <span className="text-[11px] uppercase tracking-[0.26em] text-ink-500">Approx. size</span>
+            <label className="space-y-2 block">
+              <span className={label}>Approx. size</span>
               <input className={input} placeholder="e.g. 12 acres, 3 miles" />
             </label>
-            <label className="space-y-2">
-              <span className="text-[11px] uppercase tracking-[0.26em] text-ink-500">Location *</span>
+            <label className="space-y-2 block">
+              <span className={label}>Location *</span>
               <input required className={input} placeholder="City, State" />
             </label>
-            <label className="space-y-2">
-              <span className="text-[11px] uppercase tracking-[0.26em] text-ink-500">Target timeline</span>
+            <label className="space-y-2 block">
+              <span className={label}>Target timeline</span>
               <input className={input} placeholder="e.g. Q3 2026" />
             </label>
           </div>
 
           <label className="space-y-2 block">
-            <span className="text-[11px] uppercase tracking-[0.26em] text-ink-500">Scope notes</span>
+            <span className={label}>Scope notes</span>
             <textarea
               rows={5}
               className={`${input} resize-none`}
@@ -95,9 +96,9 @@ export function ContactForm() {
             />
           </label>
 
-          <label className="flex items-center gap-3 rounded-xl border border-dashed border-ink-300 bg-cream-100 px-4 py-5 cursor-pointer hover:border-ink-950 transition">
-            <Upload className="h-5 w-5 text-ember-500" />
-            <span className="text-sm text-ink-600">Upload site photos or plans (optional)</span>
+          <label className="flex items-center gap-3 border border-dashed border-white/20 bg-tar-900 px-4 py-5 cursor-pointer hover:border-hivis-500 transition">
+            <Upload className="h-5 w-5 text-hivis-500" />
+            <span className="text-sm text-white/60">Upload site photos or plans (optional)</span>
             <input type="file" multiple className="hidden" />
           </label>
 
@@ -108,7 +109,7 @@ export function ContactForm() {
               </>
             )}
           </button>
-          <p className="text-xs text-ink-500 text-center">
+          <p className="mono text-[11px] uppercase tracking-[0.2em] text-white/45 text-center">
             We respond within one business day. Urgent? Call (214) 555-0123.
           </p>
         </motion.form>
